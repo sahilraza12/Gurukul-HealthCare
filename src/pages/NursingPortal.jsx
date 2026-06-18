@@ -43,7 +43,7 @@ export default function NursingPortal({ onBack }) {
   }, [sliderImages.length]);
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 pb-16 px-4 animate-fade-in">
+    <div className="min-h-screen bg-slate-50 pt-32 pb-16 px-4 animate-fade-in">
       <div className="max-w-7xl mx-auto bg-white rounded-[32px] shadow-2xl border border-slate-200/80 overflow-hidden">
         
         {/* Navigation Control Bar */}

@@ -11,7 +11,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       phone: "+91 9675631111, 9501365511",
       email: "chairmangips@gmail.com",
       timing: "Mon - Sat: 09:00 AM - 05:30 PM",
-      title: "GURUKUL HEALTHCARE",
+      title: "GURUKUL GROUP OF INSTITUTES",
       subtitle: "Integrated Educational Campus",
       useImageLogo: false,
       icon: "🏛️",
@@ -31,7 +31,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       title: "GIPS PHARMACY",
       subtitle: "Pioneering Pharmacy & Paramedical",
       useImageLogo: true,
-      logoSrc: "/logo.png", // Mapped to public/logo_gips.png
+      logoSrc: "/bannerimage/logo.png", // Mapped to public/logo_gips.png
       menu: [
         { name: "Home Gateway", type: "link", action: onHomeClick },
         { name: "About GIPS", type: "dropdown", subItems: ["Chairman Desk", "Vision & Mission", "Key Features"] },
@@ -48,7 +48,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       title: "GSN NURSING",
       subtitle: "Gurukul Institute of Nursing Sciences",
       useImageLogo: true,
-      logoSrc: "logo (1).png", // Mapped to public/logo_gsn.png
+      logoSrc: "/bannerimage/logo.png", // Mapped to public/logo_gsn.png
       menu: [
         { name: "Home Gateway", type: "link", action: onHomeClick },
         { name: "About GSN", type: "dropdown", subItems: ["NOC Punjab Govt", "Chairman Desk", "Principal Desk"] },

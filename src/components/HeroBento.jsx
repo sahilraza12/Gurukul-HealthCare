@@ -1,56 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-// 🚀 Passing the action properties correctly from App.jsx parent
+// 🚀 Simplified version with a single static medical background
 export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
-  const allImages = [
-    // "/bannerimage/1508674099IMG_5750.JPG",
-    // "/bannerimage/17202233221bbecee3-f4a1-4c3c-ac25-b3c0a26cd594.jpeg",
-    "/bannerimage/image8.jpg",
-    "/bannerimage/image2.jpg",
-    "/bannerimage/image4.jpg",
-    "/bannerimage/image5.jpg",
-    "/bannerimage/image6.jpg",
-    "/bannerimage/image7.jpg",
-    "/bannerimage/image1.jpg"
-
-    // "/bannerimage/109012293002c0d482-5150-4d1d-8b47-d83f16cee82f.jpeg"
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    allImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, [allImages]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % allImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [allImages.length]);
+  
+  // Tumhari di hui medical image URL
+  const bgImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi7Gz8OBJMLOKQa_pOwlVwVG88tjltiq--89E_Zaqx-Dlml9kgXvZNLFT-&s=10";
 
   return (
     <div className="relative min-h-screen pt-32 pb-16 bg-slate-100 flex items-center justify-center overflow-hidden">
       
-      {/* Background slider engine */}
-      <div className="absolute inset-0 z-0 bg-slate-200">
-        {allImages.map((imgUrl, index) => (
-          <img
-            key={index}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
-              index === currentIndex ? 'opacity-95 z-10' : 'opacity-0 z-0'
-            }`}
-            src={imgUrl}
-            alt={`Campus Slide ${index}`}
-            onError={(e) => { e.target.style.opacity = '0'; }}
-          />
-        ))}
+      {/* --- SINGLE STATIC BACKGROUND IMAGE --- */}
+      <div className="absolute inset-0 z-0 bg-slate-900">
+        <img
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-60 brightness-[0.8]"
+          src={bgImage}
+          alt="Medical Campus Background"
+        />
       </div>
 
-      <div className="absolute inset-0 bg-black/25 z-10 pointer-events-none" />
+      {/* Dark overlay to make text pop */}
+      <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
       {/* Main Interface Structure */}
       <div className="max-w-7xl mx-auto px-4 w-full relative z-20 mt-6">
@@ -84,7 +53,6 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
                 PCI Approved premier core setups targeting advanced formulation, digital analytical chemistry labs, and comprehensive **LAB 1** research infrastructures.
               </p>
             </div>
-            {/* 🛑 FIX HERE: Linked onClick event handler */}
             <button 
               onClick={onSelectPharmacy}
               className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-600/30"
@@ -106,7 +74,6 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
                 INC Approved specialized professional tracking focusing heavily on live **HAP PRACTICAL PERFORMING** wards, medical simulation, and direct clinical tie-ups.
               </p>
             </div>
-            {/* 🛑 FIX HERE: Linked onClick event handler */}
             <button 
               onClick={onSelectNursing}
               className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-slate-800 transition-all duration-300 shadow-lg"
