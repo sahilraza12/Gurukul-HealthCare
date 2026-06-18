@@ -13,9 +13,8 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       timing: "Mon - Sat: 09:00 AM - 05:30 PM",
       title: "GURUKUL GROUP OF INSTITUTES",
       subtitle: "Integrated Educational Campus",
-      useImageLogo: false,
-      icon: "🏛️",
-      iconBg: "from-slate-100 to-slate-200/60",
+      useImageLogo: true,
+      logoSrc: "/bannerimage/logo.png",
       menu: [
         { name: "Home Gateway", type: "link", action: onHomeClick },
         { name: "Pharmacy Division", type: "link", action: onSelectPharmacy },
@@ -31,7 +30,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       title: "GIPS PHARMACY",
       subtitle: "Pioneering Pharmacy & Paramedical",
       useImageLogo: true,
-      logoSrc: "/bannerimage/logo.png", // Mapped to public/logo_gips.png
+      logoSrc: "/bannerimage/logo.png", // Mapped to public/bannerimage/logo.png
       menu: [
         { name: "Home Gateway", type: "link", action: onHomeClick },
         { name: "About GIPS", type: "dropdown", subItems: ["Chairman Desk", "Vision & Mission", "Key Features"] },
@@ -48,7 +47,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
       title: "GSN NURSING",
       subtitle: "Gurukul Institute of Nursing Sciences",
       useImageLogo: true,
-      logoSrc: "/bannerimage/logo.png", // Mapped to public/logo_gsn.png
+      logoSrc: "/bannerimage/logo.png", // Mapped to public/bannerimage/logo (1).png
       menu: [
         { name: "Home Gateway", type: "link", action: onHomeClick },
         { name: "About GSN", type: "dropdown", subItems: ["NOC Punjab Govt", "Chairman Desk", "Principal Desk"] },
@@ -62,7 +61,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300">
-      
+
       {/* Dynamic Header Info Strip Panel */}
       <div className={`bg-gradient-to-r ${currentConfig.stripBg} text-white text-[11px] font-mono font-bold py-2 px-4 flex flex-col md:flex-row justify-between items-center gap-2 transition-colors duration-500`}>
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
@@ -80,16 +79,16 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
 
       {/* Main Brand Action Navigation Area */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between relative">
-        
+
         {/* Dynamic Image Logo & Crest Mounting Component */}
         <div onClick={onHomeClick} className="flex items-center space-x-3 cursor-pointer group select-none">
           {currentConfig.useImageLogo ? (
             <div className="w-12 h-12 rounded-full bg-white border border-slate-200 p-0.5 shadow-sm overflow-hidden flex items-center justify-center flex-shrink-0 transform group-hover:scale-105 transition-transform duration-300">
-              <img 
-                src={currentConfig.logoSrc} 
-                alt="Gurukul Institutional Logo Badge" 
+              <img
+                src={currentConfig.logoSrc}
+                alt="Gurukul Institutional Logo Badge"
                 className="w-full h-full object-contain"
-                onError={(e) => { 
+                onError={(e) => {
                   e.target.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>";
                 }}
               />
@@ -99,7 +98,7 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
               {currentConfig.icon}
             </div>
           )}
-          
+
           {/* Typography Profile Block */}
           <div>
             <span className="block font-black text-slate-900 text-sm md:text-base tracking-tight leading-none uppercase group-hover:text-emerald-700 transition-colors">
@@ -114,14 +113,14 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
         {/* Mapped Dropdown Navigation Layer Row Links */}
         <nav className="hidden lg:flex items-center space-x-1 font-sans text-xs font-black uppercase tracking-wider text-slate-700">
           {currentConfig.menu.map((item, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="relative p-2"
               onMouseEnter={() => item.type === 'dropdown' && setActiveDropdown(idx)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <button 
-                onClick={item.action ? item.action : undefined} 
+              <button
+                onClick={item.action ? item.action : undefined}
                 className="px-3 py-2 rounded-xl transition-all hover:bg-slate-100 hover:text-emerald-700 flex items-center gap-1 cursor-pointer"
               >
                 <span>{item.name}</span>
