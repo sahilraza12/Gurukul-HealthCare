@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const timeoutRef = useRef(null)
+  const handleMouseEnter = (idx) => {
+    if (timeoutRef.current){
+      clearTimeout(timeoutRef.current);
+    }
+    setActiveDropdown(idx);
+
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    },300);
+  } 
 
   // Consolidated global state configurations map matching your exact assets
   const configs = {
@@ -116,8 +130,8 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
             <div
               key={idx}
               className="relative p-2"
-              onMouseEnter={() => item.type === 'dropdown' && setActiveDropdown(idx)}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={()=> item.type === 'dropdown' && handleMouseEnter(idx)}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 onClick={item.action ? item.action : undefined}
