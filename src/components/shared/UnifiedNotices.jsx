@@ -34,10 +34,10 @@ export default function UnifiedNotices() {
         </div>
 
         {/* Tab Switchers Buttons */}
-        <div className="flex justify-center gap-2 mb-8 bg-slate-100 p-1.5 rounded-2xl w-fit mx-auto font-mono text-xs font-bold shadow-inner">
-          <button onClick={() => setActiveTab('all')} className={`px-4 py-2.5 rounded-xl transition-all ${activeTab === 'all' ? 'bg-white text-emerald-700 shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>All Bulletin</button>
-          <button onClick={() => setActiveTab('pharmacy')} className={`px-4 py-2.5 rounded-xl transition-all ${activeTab === 'pharmacy' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-600 hover:text-emerald-600'}`}>Pharmacy / Para</button>
-          <button onClick={() => setActiveTab('nursing')} className={`px-4 py-2.5 rounded-xl transition-all ${activeTab === 'nursing' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-600 hover:text-emerald-600'}`}>Nursing (GSN)</button>
+        <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-8 bg-slate-100 p-1.5 rounded-2xl w-full sm:w-fit mx-auto font-mono text-[11px] sm:text-xs font-bold shadow-inner">
+          <button onClick={() => setActiveTab('all')} className={`flex-1 sm:flex-initial text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all cursor-pointer ${activeTab === 'all' ? 'bg-white text-emerald-700 shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>All Bulletin</button>
+          <button onClick={() => setActiveTab('pharmacy')} className={`flex-1 sm:flex-initial text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all cursor-pointer ${activeTab === 'pharmacy' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-600 hover:text-emerald-600'}`}>Pharmacy / Para</button>
+          <button onClick={() => setActiveTab('nursing')} className={`flex-1 sm:flex-initial text-center px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all cursor-pointer ${activeTab === 'nursing' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-600 hover:text-emerald-600'}`}>Nursing (GSN)</button>
         </div>
 
         {/* Bulletins List mapping rendering */}

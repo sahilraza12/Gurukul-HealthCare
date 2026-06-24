@@ -8,7 +8,7 @@ export default function BentoFacilities() {
       desc: "Equipped with high-precision analytical balances, distillation setups, and chemical compounding infrastructure for modern drug research.",
       image: "/bannerimage/5519702088.jfif",
       tag: "Pharmacy",
-      size: "md:col-span-8 h-80"
+      size: "md:col-span-8 h-64 md:h-80"
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ export default function BentoFacilities() {
       desc: "Live human anatomy charts, skeleton models, and simulation tools for advanced physiology operations.",
       image: "/bannerimage/4426590152.jfif",
       tag: "Nursing & Pharmacy",
-      size: "md:col-span-4 h-80"
+      size: "md:col-span-4 h-64 md:h-80"
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ export default function BentoFacilities() {
       desc: "Wide outdoor sports ground and open interactive ecosystem cultivating overall student development.",
       image: "/bannerimage/236943159278e88f6-77b5-485f-aa4d-74088361680b.jpeg",
       tag: "Campus Facility",
-      size: "md:col-span-4 h-80"
+      size: "md:col-span-4 h-64 md:h-80"
     },
     {
       id: 4,
@@ -32,7 +32,7 @@ export default function BentoFacilities() {
       desc: "Mock patient checkup setups with standard clinical beds and emergency monitoring systems to groom real-time nursing expertise.",
       image: "/bannerimage/109012293002c0d482-5150-4d1d-8b47-d83f16cee82f.jpeg",
       tag: "Nursing",
-      size: "md:col-span-8 h-80"
+      size: "md:col-span-8 h-64 md:h-80"
     }
   ];
 

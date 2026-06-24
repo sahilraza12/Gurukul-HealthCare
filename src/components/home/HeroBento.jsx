@@ -1,25 +1,26 @@
 import React from 'react';
 
-// 🚀 Simplified version with a single static medical background
 export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
-  
-  // Tumhari di hui medical image URL
-  const bgImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi7Gz8OBJMLOKQa_pOwlVwVG88tjltiq--89E_Zaqx-Dlml9kgXvZNLFT-&s=10";
+  // Configured to use high-quality local campus banner image
+  const bgImage = "/bannerimage/image1.jpg";
 
   return (
-    <div className="relative min-h-screen pt-32 pb-16 bg-slate-100 flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen pt-24 pb-16 bg-slate-950 flex items-center justify-center overflow-hidden">
       
       {/* --- SINGLE STATIC BACKGROUND IMAGE --- */}
-      {/* <div className="absolute inset-0 z-0 bg-slate-900"> */}
-        {/* <img
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-60 brightness-[0.8]"
+      <div className="absolute inset-0 z-0 bg-slate-950">
+        <img
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-55 brightness-[0.75]"
           src={bgImage}
           alt="Medical Campus Background"
-        /> */}
-      {/* </div> */}
+          onError={(e) => {
+            e.target.src = "https://images.unsplash.com/photo-1586773860418-d3b719d30036?auto=format&fit=crop&w=1600&q=80";
+          }}
+        />
+      </div>
 
       {/* Dark overlay to make text pop */}
-      <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
 
       {/* Main Interface Structure */}
       <div className="max-w-7xl mx-auto px-4 w-full relative z-20 mt-6">
@@ -41,7 +42,7 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
           
           {/* Pharmacy Block */}
-          <div className="bg-white/95 backdrop-blur-md border-2 border-slate-200/60 hover:border-emerald-600 rounded-3xl p-8 md:p-10 transition-all duration-300 shadow-2xl flex flex-col justify-between group transform hover:-translate-y-1">
+          <div className="bg-white/95 backdrop-blur-md border-2 border-slate-200/60 hover:border-emerald-600 rounded-3xl p-6 md:p-10 transition-all duration-300 shadow-2xl flex flex-col justify-between group transform hover:-translate-y-1">
             <div>
               <div className="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 font-black text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-md">
                 Rx
@@ -55,14 +56,14 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
             </div>
             <button 
               onClick={onSelectPharmacy}
-              className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-600/30"
+              className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-emerald-700 transition-all duration-300 shadow-lg shadow-emerald-600/30 cursor-pointer"
             >
               Explore Pharmacy Portal →
             </button>
           </div>
 
           {/* Nursing Block */}
-          <div className="bg-white/95 backdrop-blur-md border-2 border-slate-200/60 hover:border-emerald-600 rounded-3xl p-8 md:p-10 transition-all duration-300 shadow-2xl flex flex-col justify-between group transform hover:-translate-y-1">
+          <div className="bg-white/95 backdrop-blur-md border-2 border-slate-200/60 hover:border-emerald-600 rounded-3xl p-6 md:p-10 transition-all duration-300 shadow-2xl flex flex-col justify-between group transform hover:-translate-y-1">
             <div>
               <div className="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 font-bold text-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-md">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
@@ -76,7 +77,7 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
             </div>
             <button 
               onClick={onSelectNursing}
-              className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-slate-800 transition-all duration-300 shadow-lg"
+              className="w-full bg-emerald-600 text-white font-extrabold py-4 rounded-xl hover:bg-slate-800 transition-all duration-300 shadow-lg cursor-pointer"
             >
               Explore Nursing Portal →
             </button>
