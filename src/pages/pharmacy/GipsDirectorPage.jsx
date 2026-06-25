@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CampusDirectory from '../../components/shared/CampusDirectory';
 
 export default function GipsDirectorPage({ onBackToPortal }) {
+  const [imgError, setImgError] = useState(false);
   return (
     <div className="min-h-screen bg-slate-50 pt-24 pb-16 px-4 animate-fade-in">
       <div className="max-w-4xl mx-auto bg-white rounded-[32px] shadow-2xl border border-slate-200/80 overflow-hidden">
@@ -49,8 +50,17 @@ export default function GipsDirectorPage({ onBackToPortal }) {
           
           {/* Director Info Badge */}
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 border-b border-slate-100">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-5xl shadow-inner flex-shrink-0">
-              👩‍🏫
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-inner flex-shrink-0 overflow-hidden">
+              {!imgError ? (
+                <img 
+                  src="/director.jpg" 
+                  alt="Dr. Rohini Dewedi" 
+                  className="w-full h-full object-contain"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <span className="text-5xl">👩‍🏫</span>
+              )}
             </div>
             <div className="text-center md:text-left space-y-2 mt-2">
               <h4 className="font-black text-slate-900 text-xl tracking-tight leading-none">Dr. Rohini Dewedi</h4>

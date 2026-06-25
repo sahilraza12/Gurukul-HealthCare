@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import CampusDirectory from '../../components/shared/CampusDirectory';
 
-export default function PharmacyPortal({ onBack, activeSection: propActiveSection, setActiveSection: propSetActiveSection, onNavigateToAbout, onNavigateToChairman, onNavigateToDirector, onNavigateToVision }) {
+export default function PharmacyPortal({ 
+  onBack, 
+  activeSection: propActiveSection, 
+  setActiveSection: propSetActiveSection, 
+  onNavigateToAbout, 
+  onNavigateToChairman, 
+  onNavigateToDirector, 
+  onNavigateToVision,
+  selectedCourse: propSelectedCourse,
+  setSelectedCourse: propSetSelectedCourse
+}) {
   const [localActiveSection, setLocalActiveSection] = useState('facilities');
   const activeSection = propActiveSection || localActiveSection;
   const setActiveSection = propSetActiveSection || setLocalActiveSection;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [localSelectedCourse, setLocalSelectedCourse] = useState(null);
+  const selectedCourse = propSelectedCourse !== undefined ? propSelectedCourse : localSelectedCourse;
+  const setSelectedCourse = propSetSelectedCourse || setLocalSelectedCourse;
 
   const indianStates = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", 
@@ -30,103 +42,91 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
 
   const courses = [
     { 
-      name: "M.Pharm (Master of Pharmacy)", 
-      duration: "2 Years", 
-      eligibility: "B.Pharmacy degree from a recognized institution",
-      approvedBy: "AICTE & PCI, New Delhi",
-      affiliatedTo: "MRS PTU, Bathinda",
+      name: "M.Pharmacy", 
+      displayName: "M.Pharmacy (Master of Pharmacy)",
+      duration: "AS PER GOVT. NORMS", 
       fees: "AS PER GOVT. NORMS",
-      icon: "🧪"
+      icon: "🧪",
+      programs: [
+        {
+          sno: 1,
+          name: "M.Pharmacy",
+          eligibility: "Candidates usually need a B Pharmacy degree from a recognized institution.",
+          duration: "2 Year",
+          approvedBy: "AICTE & PCI, New Delhi",
+          affiliatedTo: "MRS PTU, Bathinda"
+        }
+      ]
     },
     { 
-      name: "B.Pharm (Bachelor of Pharmacy)", 
-      duration: "4 Years", 
-      eligibility: "10+2 Medical / Non-Medical (PCM/PCB)",
-      approvedBy: "AICTE & PCI, New Delhi",
-      affiliatedTo: "MRS PTU, Bathinda",
+      name: "Bachelor of Pharmacy", 
+      displayName: "Bachelor of Pharmacy (B.Pharmacy)",
+      duration: "AS PER GOVT. NORMS", 
       fees: "AS PER GOVT. NORMS",
-      icon: "💊"
+      icon: "💊",
+      programs: [
+        {
+          sno: 1,
+          name: "B.Pharmacy",
+          eligibility: "10+2 Madical/ Non- Medical",
+          duration: "4 Year",
+          approvedBy: "AICTE & PCI, New Delhi",
+          affiliatedTo: "MRS PTU, Bathinda"
+        }
+      ]
     },
     { 
-      name: "B.Pharmacy LEET (Lateral Entry)", 
-      duration: "3 Years", 
-      eligibility: "Diploma in Pharmacy (D.Pharm) track clear",
-      approvedBy: "AICTE & PCI, New Delhi",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "AS PER GOVT. NORMS",
-      icon: "⚡"
+      name: "Diploma Pharmacy", 
+      displayName: "Diploma Pharmacy (D.Pharmacy)",
+      duration: "AS PER GOVT NORMS", 
+      fees: "AS PER GOVT NORMS",
+      icon: "🏥",
+      programs: [
+        {
+          sno: 1,
+          name: "D.PHARMACY",
+          eligibility: "10+2 MEDICAL/ NON-MEDICAL",
+          duration: "2 YEAR",
+          approvedBy: "AICTE & PCI, New Delhi",
+          affiliatedTo: "PSBTE & IT (Chandigarh)"
+        }
+      ]
     },
     { 
-      name: "D.Pharmacy (Diploma in Pharmacy)", 
-      duration: "2 Years", 
-      eligibility: "10+2 Medical / Non-Medical (PCM/PCB)",
-      approvedBy: "AICTE & PCI, New Delhi",
-      affiliatedTo: "PSBTE & IT (Chandigarh)",
-      fees: "AS PER GOVT. NORMS",
-      icon: "🏥"
-    },
-    { 
-      name: "B.Sc MLS (Medical Laboratory Sciences)", 
-      duration: "3 Years", 
-      eligibility: "10+2 Medical / Non-Medical",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
+      name: "Paramedical Courses", 
+      displayName: "Paramedical Courses",
+      duration: "as per Govt. Norms", 
       fees: "as per Govt. Norms",
-      icon: "🔬"
-    },
-    { 
-      name: "B.Sc MLS (LEET)", 
-      duration: "2 Years", 
-      eligibility: "Diploma in Medical Laboratory Technology",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "as per Govt. Norms",
-      icon: "🧬"
-    },
-    { 
-      name: "B.Sc OTT (Operation Theatre Technology)", 
-      duration: "3 Years", 
-      eligibility: "10+2 Medical / Non-Medical",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "as per Govt. Norms",
-      icon: "⛑️"
-    },
-    { 
-      name: "B.Sc OTT (LEET)", 
-      duration: "2 Years", 
-      eligibility: "Diploma in Operation Theatre Technology",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "as per Govt. Norms",
-      icon: "😷"
-    },
-    { 
-      name: "B.Sc Radiology (RIT)", 
-      duration: "3 Years", 
-      eligibility: "10+2 Medical / Non-Medical",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "as per Govt. Norms",
-      icon: "🩻"
-    },
-    { 
-      name: "B.Sc RIT (LEET)", 
-      duration: "2 Years", 
-      eligibility: "Diploma in Radiography & Imaging Technology",
-      approvedBy: "PCI & AICTE (New Delhi)",
-      affiliatedTo: "MRS PTU, Bathinda",
-      fees: "as per Govt. Norms",
-      icon: "☢️"
+      icon: "🔬",
+      programs: [
+        {
+          sno: 1,
+          name: "B.Sc. Medical Laboratory Science (MLS)",
+          eligibility: "10+2 Medical / Non- Medical",
+          duration: "3 Years",
+          approvedBy: "PCI & AICTE (New Delhi)",
+          affiliatedTo: "MRS PTU, Bathinda"
+        },
+        {
+          sno: 2,
+          name: "B.Sc. Operation Theatre (OT)",
+          eligibility: "10+2 Medical / Non- Medical",
+          duration: "3 Years",
+          approvedBy: "PCI & AICTE (New Delhi)",
+          affiliatedTo: "MRS PTU, Bathinda"
+        },
+        {
+          sno: 3,
+          name: "B.Sc. Radiology",
+          eligibility: "10+2 Medical / Non- Medical",
+          duration: "3 Years",
+          approvedBy: "PCI & AICTE (New Delhi)",
+          affiliatedTo: "MRS PTU, Bathinda"
+        }
+      ]
     }
   ];
 
-  const directory = [
-    { role: "Pharmacy Principal", email: "principalgips2017@gmail.com", badge: "Academic Head" },
-    { role: "Paramedical Sciences", email: "paramedicalinstiute@gmail.com", badge: "Allied Health" },
-    { role: "Society Secretary", email: "s.h.educationalsociety@gmail.com", badge: "Management" },
-    { role: "NSDC Skill Cell", email: "shes.skills@gmail.com", badge: "Skill Govt Training" }
-  ];
 
   // Automatic Fading Slider Cycle Logic
   useEffect(() => {
@@ -186,21 +186,27 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
         {/* Affiliations Badges Strip */}
         <div className="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-6 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-12">
           <div className="flex items-center space-x-3 bg-white px-4 sm:px-5 py-3 rounded-xl border shadow-sm flex-1 min-w-[240px] sm:flex-initial">
-            <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0">⚕️</div>
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-50 flex items-center justify-center flex-shrink-0">
+              <img src="/bannerimage/pci.jpg" alt="PCI Logo" className="w-full h-full object-contain" />
+            </div>
             <div>
               <h5 className="font-black text-slate-900 text-xs uppercase leading-none">PCI Approved</h5>
               <span className="text-[10px] text-slate-400 font-bold font-mono">Pharmacy Council of India</span>
             </div>
           </div>
           <div className="flex items-center space-x-3 bg-white px-4 sm:px-5 py-3 rounded-xl border shadow-sm flex-1 min-w-[240px] sm:flex-initial">
-            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-xl flex-shrink-0">🎓</div>
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-50 flex items-center justify-center flex-shrink-0">
+              <img src="/bannerimage/ptu.png" alt="PTU Logo" className="w-full h-full object-contain" />
+            </div>
             <div>
               <h5 className="font-black text-slate-900 text-xs uppercase leading-none">MRSPTU Affiliated</h5>
               <span className="text-[10px] text-slate-400 font-bold font-mono">Maharaja Ranjit Singh Tech University</span>
             </div>
           </div>
           <div className="flex items-center space-x-3 bg-white px-4 sm:px-5 py-3 rounded-xl border shadow-sm flex-1 min-w-[240px] sm:flex-initial">
-            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-xl flex-shrink-0">⚙️</div>
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-50 flex items-center justify-center flex-shrink-0">
+              <img src="/bannerimage/psbte.jpg" alt="PSBTE Logo" className="w-full h-full object-contain" />
+            </div>
             <div>
               <h5 className="font-black text-slate-900 text-xs uppercase leading-none">PSBTE Recognised</h5>
               <span className="text-[10px] text-slate-400 font-bold font-mono">Punjab State Board Technical Ed.</span>
@@ -425,7 +431,7 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
         <div className="p-6 md:p-10 border-t border-slate-100 space-y-10 bg-slate-50/30">
           
           {/* Courses Matrix Showcase */}
-          <div>
+          <div id="courses-matrix" className="scroll-mt-24">
             <div className="mb-6">
               <h3 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
@@ -438,7 +444,7 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
 
             <div className="grid grid-cols-1 gap-4">
               {courses.map((course, idx) => {
-                const isSelected = selectedCourse?.name === course.name;
+                const isSelected = (selectedCourse?.name || selectedCourse) === course.name;
                 
                 return (
                   <div key={idx} className="space-y-2">
@@ -455,7 +461,7 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
                         <span className="text-xl bg-slate-50 p-2 rounded-xl border flex-shrink-0 shadow-sm">{course.icon}</span>
                         <div>
                           <h4 className="font-black text-slate-900 text-sm md:text-base leading-snug tracking-tight">
-                            {course.name}
+                            {course.displayName || course.name}
                           </h4>
                           <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider mt-0.5">
                             ⏱️ Duration: {course.duration}
@@ -471,34 +477,90 @@ export default function PharmacyPortal({ onBack, activeSection: propActiveSectio
 
                     {/* INLINE DETAILS DROPBOX - Opens right underneath the active card */}
                     {isSelected && (
-                      <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-xl animate-fade-in space-y-4 mx-1">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold">
-                          
-                          <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
-                            <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">💰 Course Fees :</span>
-                            <p className="text-slate-200 uppercase">{course.fees}</p>
+                      <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-xl animate-fade-in space-y-5 mx-1">
+                        {/* Summary Header */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold">
+                          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <div>
+                              <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">💰 Course Fees</span>
+                              <p className="text-emerald-400 text-xs sm:text-sm font-black uppercase">{course.fees}</p>
+                            </div>
+                            <span className="text-xl">💳</span>
+                          </div>
+                          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <div>
+                              <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">⏱️ General Duration</span>
+                              <p className="text-slate-200 text-xs sm:text-sm font-black uppercase">{course.duration}</p>
+                            </div>
+                            <span className="text-xl">📅</span>
+                          </div>
+                        </div>
+
+                        {/* Program specifications */}
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 pb-1 border-b border-slate-800">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            <h5 className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">Detailed Program Specifications</h5>
                           </div>
 
-                          <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
-                            <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">⏱️ Total Duration :</span>
-                            <p className="text-slate-200 uppercase">{course.duration} (Full Time)</p>
+                          {/* Desktop/Tablet view: Premium structured table */}
+                          <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/40">
+                            <table className="w-full text-left text-xs border-collapse">
+                              <thead>
+                                <tr className="bg-slate-950/80 text-slate-400 font-mono text-[9px] uppercase border-b border-slate-800">
+                                  <th className="py-3 px-4 text-center font-bold w-12">S.No.</th>
+                                  <th className="py-3 px-4 font-bold">Program Name</th>
+                                  <th className="py-3 px-4 font-bold">Eligibility Criteria</th>
+                                  <th className="py-3 px-4 font-bold w-28">Duration</th>
+                                  <th className="py-3 px-4 font-bold">Approved By</th>
+                                  <th className="py-3 px-4 font-bold">Affiliated To</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-800/60 font-medium">
+                                {course.programs.map((prog, pIdx) => (
+                                  <tr key={pIdx} className="hover:bg-slate-900/30 transition-colors">
+                                    <td className="py-3.5 px-4 text-center font-mono text-slate-500 font-bold">{prog.sno}</td>
+                                    <td className="py-3.5 px-4 font-black text-slate-100">{prog.name}</td>
+                                    <td className="py-3.5 px-4 text-emerald-400 font-semibold leading-relaxed">{prog.eligibility}</td>
+                                    <td className="py-3.5 px-4 font-mono text-slate-300">{prog.duration}</td>
+                                    <td className="py-3.5 px-4 text-slate-300">{prog.approvedBy}</td>
+                                    <td className="py-3.5 px-4 text-slate-300">{prog.affiliatedTo}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
                           </div>
 
-                          <div className="bg-slate-950 p-3 rounded-xl border border-slate-850 sm:col-span-2">
-                            <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">🎓 Eligibility Criteria :</span>
-                            <p className="text-emerald-400 font-bold leading-relaxed">{course.eligibility}</p>
+                          {/* Mobile view: Stacked details cards */}
+                          <div className="block md:hidden space-y-3">
+                            {course.programs.map((prog, pIdx) => (
+                              <div key={pIdx} className="bg-slate-950 p-4 rounded-xl border border-slate-850 space-y-3">
+                                <div className="flex items-center justify-between border-b border-slate-900 pb-2">
+                                  <span className="text-[9px] font-mono font-bold text-slate-500">PROGRAM #{prog.sno}</span>
+                                  <span className="text-xs font-mono font-bold text-emerald-400">{prog.duration}</span>
+                                </div>
+                                <div>
+                                  <h6 className="font-black text-slate-100 text-xs sm:text-sm">{prog.name}</h6>
+                                </div>
+                                <div className="grid grid-cols-1 gap-2 text-[11px] pt-1">
+                                  <div>
+                                    <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">🎓 Eligibility:</span>
+                                    <p className="text-emerald-400 font-bold leading-relaxed">{prog.eligibility}</p>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-2 border-t border-slate-900/60 pt-2">
+                                    <div>
+                                      <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">📜 Approved By:</span>
+                                      <p className="text-slate-300 font-medium leading-tight">{prog.approvedBy}</p>
+                                    </div>
+                                    <div>
+                                      <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">🏛️ Affiliated To:</span>
+                                      <p className="text-slate-300 font-medium leading-tight">{prog.affiliatedTo}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-
-                          <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
-                            <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">📜 Approved By :</span>
-                            <p className="text-slate-200 uppercase tracking-wide">{course.approvedBy}</p>
-                          </div>
-
-                          <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
-                            <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">🏛️ Affiliated To :</span>
-                            <p className="text-slate-200 uppercase tracking-wide">{course.affiliatedTo}</p>
-                          </div>
-
                         </div>
                       </div>
                     )}

@@ -4,27 +4,35 @@ export default function ProgramGrid() {
   const courses = [
     {
       wing: "Pharmacy (GIPS)",
-      name: "B.Pharm (Bachelor of Pharmacy)",
+      name: "Bachelor of Pharmacy (B.Pharmacy)",
       duration: "4 Years",
-      eligibility: "10+2 with Physics, Chemistry and Biology/Mathematics",
-      seats: "60 Seats",
+      eligibility: "10+2 Madical/ Non- Medical",
+      seats: "60 Seats / Govt. Norms",
       color: "border-l-4 border-emerald-600 bg-emerald-50/30"
     },
     {
       wing: "Pharmacy (GIPS)",
-      name: "B.Pharm - LEET (Lateral Entry)",
-      duration: "3 Years",
-      eligibility: "Diploma in Pharmacy (D.Pharm) from PCI approved institute",
-      seats: "Direct Admission",
+      name: "Diploma Pharmacy (D.Pharmacy)",
+      duration: "2 Years",
+      eligibility: "10+2 MEDICAL/ NON-MEDICAL",
+      seats: "60 Seats / Govt. Norms",
       color: "border-l-4 border-emerald-500 bg-emerald-50/20"
     },
     {
       wing: "Pharmacy (GIPS)",
-      name: "D.Pharm (Diploma in Pharmacy)",
+      name: "M.Pharmacy (Master of Pharmacy)",
       duration: "2 Years",
-      eligibility: "10+2 with Physics, Chemistry and Biology/Mathematics",
-      seats: "60 Seats",
-      color: "border-l-4 border-emerald-400 bg-emerald-50/10"
+      eligibility: "Candidates usually need a B Pharmacy degree from a recognized institution.",
+      seats: "As Per Govt. Norms",
+      color: "border-l-4 border-emerald-400 bg-emerald-50/15"
+    },
+    {
+      wing: "Pharmacy (GIPS)",
+      name: "Paramedical Courses (B.Sc. MLS / OT / Radiology)",
+      duration: "3 Years",
+      eligibility: "10+2 Medical / Non- Medical",
+      seats: "As Per Govt. Norms",
+      color: "border-l-4 border-emerald-300 bg-emerald-50/10"
     },
     {
       wing: "Nursing (G.S.N)",

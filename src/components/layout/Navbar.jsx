@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { getNavigationConfigs } from '../../constants/navigation';
 
-export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing, onSelectPharmacyTab, onSelectNursingTab, onContactUs }) {
+export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing, onSelectPharmacyTab, onSelectNursingTab, onSelectPharmacyCourse, onSelectPharmacyResult, onSelectPharmacyDownloads, onContactUs }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileDropdownIdx, setMobileDropdownIdx] = useState(null);
@@ -24,7 +24,9 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
   const handleSubClick = (subName) => {
     const mapped = getMappedView(currentView);
     if (mapped === 'pharmacy') {
-      if (subName === 'Vision & Mission') {
+      if (['Bachelor of Pharmacy', 'Diploma Pharmacy', 'M.Pharmacy', 'Paramedical Courses'].includes(subName)) {
+        onSelectPharmacyCourse && onSelectPharmacyCourse(subName);
+      } else if (subName === 'Vision & Mission') {
         onSelectPharmacyTab && onSelectPharmacyTab('vision');
       } else if (subName === 'Key Features') {
         onSelectPharmacyTab && onSelectPharmacyTab('features');
@@ -62,7 +64,9 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
     onHomeClick,
     onSelectPharmacy,
     onSelectNursing,
-    onContactUs
+    onContactUs,
+    onSelectPharmacyResult,
+    onSelectPharmacyDownloads
   });
 
   const currentConfig = configs[getMappedView(currentView)] || configs.home;

@@ -12,6 +12,7 @@ import GipsAboutPage from './pages/pharmacy/GipsAboutPage';
 import GipsChairmanPage from './pages/pharmacy/GipsChairmanPage';
 import GipsDirectorPage from './pages/pharmacy/GipsDirectorPage';
 import GipsVisionMissionPage from './pages/pharmacy/GipsVisionMissionPage';
+import GipsResultPage from './pages/pharmacy/GipsResultPage';
 import ContactUsPage from './pages/ContactUsPage';
 import DownloadsPage from './pages/DownloadsPage';
 import GrievancePage from './pages/GrievancePage';
@@ -21,6 +22,7 @@ function App() {
   const [viewState, setViewState] = useState('home');
   const [pharmacyTab, setPharmacyTab] = useState('about');
   const [nursingTab, setNursingTab] = useState('overview');
+  const [selectedPharmacyCourse, setSelectedPharmacyCourse] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-50 antialiased selection:bg-emerald-100 selection:text-emerald-900 flex flex-col justify-between">
@@ -48,6 +50,18 @@ function App() {
               setPharmacyTab(tab);
             }
           }}
+          onSelectPharmacyCourse={(courseName) => {
+            setViewState('pharmacy');
+            setSelectedPharmacyCourse(courseName);
+            setTimeout(() => {
+              const el = document.getElementById('courses-matrix');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 100);
+          }}
+          onSelectPharmacyResult={() => setViewState('pharmacy-result')}
+          onSelectPharmacyDownloads={() => setViewState('pharmacy-downloads')}
           onSelectNursingTab={(tab) => {
             if (tab === 'downloads-page') {
               setViewState('nursing-downloads');
@@ -83,33 +97,6 @@ function App() {
                 <CampusDirectory theme="emerald" />
               </div>
               
-              {/* --- ULTRA HIGH-END CLEAN TRUST FOOTER BLOCK --- */}
-              <footer className="bg-slate-900 text-slate-400 text-xs font-medium py-12 px-4 border-t border-slate-800 font-sans relative z-20">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800">
-                  <div>
-                    <h4 className="text-white font-black text-sm tracking-wider uppercase mb-4">Gurukul Campus</h4>
-                    <p className="leading-relaxed">VPO Badesh Kalan, Khamano, Fatehgarh Sahib, Punjab - 141801</p>
-                    <p className="mt-3 text-emerald-400 font-bold font-mono">👥 PCI & INC Approved Frameworks</p>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-black text-sm tracking-wider uppercase mb-4">Quick Link Cells</h4>
-                    <ul className="space-y-2 font-bold">
-                      <li><a href="#" onClick={() => setViewState('home')} className="hover:text-white transition-colors">Home Gateway</a></li>
-                      <li><a href="#" onClick={(e) => { e.preventDefault(); setViewState('home-grievance'); }} className="hover:text-white transition-colors">Grievance Cell Portal</a></li>
-                      <li><a href="#" onClick={(e) => { e.preventDefault(); setViewState('pharmacy-downloads'); }} className="hover:text-white transition-colors">Syllabus & Downloads</a></li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-black text-sm tracking-wider uppercase mb-4">Admission Helpdesk</h4>
-                    <p className="font-mono text-white font-bold">📞 +91 9675631111, 9501365511</p>
-                    <p className="mt-2 font-mono text-slate-400">✉️ chairmangips@gmail.com</p>
-                  </div>
-                </div>
-                <div className="max-w-6xl mx-auto pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[11px] text-slate-500 font-bold">
-                  <span>© 2026 Gurukul Healthcare Group. All Rights Reserved.</span>
-                  <span>Designed with React & Tailwind CSS</span>
-                </div>
-              </footer>
             </div>
           )}
 
@@ -122,6 +109,8 @@ function App() {
               onNavigateToChairman={() => setViewState('pharmacy-chairman')}
               onNavigateToDirector={() => setViewState('pharmacy-director')}
               onNavigateToVision={() => setViewState('pharmacy-vision')}
+              selectedCourse={selectedPharmacyCourse}
+              setSelectedCourse={setSelectedPharmacyCourse}
             />
           )}
 
@@ -145,6 +134,12 @@ function App() {
 
           {viewState === 'pharmacy-vision' && (
             <GipsVisionMissionPage 
+              onBackToPortal={() => setViewState('pharmacy')} 
+            />
+          )}
+
+          {viewState === 'pharmacy-result' && (
+            <GipsResultPage 
               onBackToPortal={() => setViewState('pharmacy')} 
             />
           )}
@@ -214,6 +209,13 @@ function App() {
           )}
         </main>
       </div>
+
+      {/* Shared Global Footer */}
+      <Footer 
+        setViewState={setViewState} 
+        setNursingTab={setNursingTab} 
+        setPharmacyTab={setPharmacyTab} 
+      />
       
     </div>
   );

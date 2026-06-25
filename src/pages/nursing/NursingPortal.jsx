@@ -32,10 +32,6 @@ export default function NursingPortal({ onBack, activeSection: propActiveSection
     { name: "ANM (Auxiliary Nursing Midwifery)", duration: "2 Years", seats: "30 Seats", eligibility: "10+2 Any Stream - Min 40%" }
   ];
 
-  const directory = [
-    { role: "Nursing Principal Desk", email: "principalgsn2024@gmail.com", badge: "Academic Head" },
-    { role: "Chairman Management Cell", email: "chairmangips@gmail.com", badge: "Administration" }
-  ];
 
   // Automatic Background Slide Animation Engine
   useEffect(() => {

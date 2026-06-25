@@ -59,20 +59,20 @@ export const getDepartments = (context) => [
     highlight: context === 'pharmacy' || context === 'home'
   },
   {
-    name: "Department of Paramedical Sciences",
-    icon: "🔬",
-    details: [
-      { label: "E-mail", value: "paramedicalinstiute@gmail.com" }
-    ],
-    highlight: context === 'pharmacy' || context === 'home'
-  },
-  {
     name: "Department of Nursing",
     icon: "🏥",
     details: [
       { label: "E-mail", value: "principalgsn2024@gmail.com" }
     ],
     highlight: context === 'nursing' || context === 'home'
+  },
+  {
+    name: "Department of Paramedical Sciences",
+    icon: "🔬",
+    details: [
+      { label: "E-mail", value: "paramedicalinstiute@gmail.com" }
+    ],
+    highlight: context === 'pharmacy' || context === 'home'
   },
   {
     name: "NSDC Training Provider",

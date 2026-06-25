@@ -42,61 +42,40 @@ export default function DownloadsPage({ context, onBack }) {
   const documents = {
     pharmacy: [
       {
-        category: 'Admissions & Flyers',
-        files: [
-          { name: 'GIPS Admission Brochure 2026', size: '4.8 MB', format: 'PDF', version: 'v2.1' },
-          { name: 'Official GIPS Admission Form 2026', size: '1.2 MB', format: 'PDF', version: 'v1.0' },
-          { name: 'GIPS Fee Structure & Guidelines', size: '750 KB', format: 'PDF', version: '2026' }
-        ]
-      },
-      {
-        category: 'Academic Syllabi',
-        files: [
-          { name: 'B.Pharm Syllabus MRSPTU Structure', size: '2.5 MB', format: 'PDF', version: '2026' },
-          { name: 'D.Pharm Syllabus PSBTE Structure', size: '1.9 MB', format: 'PDF', version: '2026' },
-          { name: 'B.Sc Medical Laboratory Sciences Syllabus', size: '1.6 MB', format: 'PDF', version: '2026' },
-          { name: 'B.Sc OTT & RIT Course Structures', size: '2.1 MB', format: 'PDF', version: '2026' }
-        ]
-      },
-      {
         category: 'Regulatory & Approvals',
         files: [
-          { name: 'PCI Extension of Approval Letter', size: '1.1 MB', format: 'PDF', version: '2025-26' },
-          { name: 'MRSPTU Affiliation Document', size: '890 KB', format: 'PDF', version: '2025-26' },
-          { name: 'Anti-Ragging Declaration Format', size: '320 KB', format: 'PDF', version: 'v1.0' }
+          { name: 'MRSPTU Affiliation Document', format: 'PDF', url: '/documents/regulatory/mrsptu-affiliation-document.pdf' },
+          { name: 'PCI Extension of Approval Letter', format: 'PDF', url: '/documents/regulatory/pci-approval-letter.pdf' },
+          { name: 'PCI SIF Report 2024-25', format: 'PDF', url: '/documents/regulatory/pci-sif-report-2024-25.pdf' }
+        ]
+      },
+      {
+        category: 'Mandatory Committees & Cells',
+        files: [
+          { name: 'Admission Cell', format: 'PDF', url: '/documents/committees/admission-cell.pdf' },
+          { name: 'Committee for Prevention of Sexual Harassment', format: 'PDF', url: '/documents/committees/sexual-harassment-prevention-committee.pdf' },
+          { name: 'Cultural Committee', format: 'PDF', url: '/documents/committees/cultural-committee.pdf' },
+          { name: 'First Aid Committee', format: 'PDF', url: '/documents/committees/first-aid-committee.pdf' },
+          { name: 'Grievance Redressal Committee', format: 'PDF', url: '/documents/committees/grievance-redressal-committee.pdf' },
+          { name: 'Internal Complaints Committee', format: 'PDF', url: '/documents/committees/internal-complaints-committee.pdf' },
+          { name: 'Placement & Career Guidance Cell', format: 'PDF', url: '/documents/committees/placement-career-guidance-cell.pdf' },
+          { name: 'Prevention of Caste Discrimination Committee', format: 'PDF', url: '/documents/committees/caste-discrimination-prevention-committee.pdf' },
+          { name: 'Sports Committee', format: 'PNG', url: '/documents/committees/sports-committee.png' }
         ]
       }
     ],
-    nursing: [
-      {
-        category: 'Admissions & Brochures',
-        files: [
-          { name: 'Gurukul Nursing Admission Prospectus 2026', size: '5.2 MB', format: 'PDF', version: 'v1.0' },
-          { name: 'GSN Course Eligibility Criteria sheet', size: '640 KB', format: 'PDF', version: '2026' }
-        ]
-      },
-      {
-        category: 'Syllabi & Curriculum',
-        files: [
-          { name: 'B.Sc Nursing Course Syllabus INC Regulation', size: '3.1 MB', format: 'PDF', version: '2026' },
-          { name: 'GNM Syllabus & Clinical Practicum Outline', size: '2.4 MB', format: 'PDF', version: '2026' },
-          { name: 'ANM Syllabus PSBTE Pattern', size: '1.8 MB', format: 'PDF', version: '2026' }
-        ]
-      },
-      {
-        category: 'Government Approvals',
-        files: [
-          { name: 'NOC Punjab Govt Affiliation Letter', size: '1.4 MB', format: 'PDF', version: '2025-26' },
-          { name: 'INC Recognition Extension Document', size: '980 KB', format: 'PDF', version: '2025-26' }
-        ]
-      }
-    ]
+    nursing: []
   };
 
   const currentDocs = documents[context] || documents.pharmacy;
 
-  const handleDownload = (filename) => {
-    alert(`Starting download for: ${filename}`);
+  const handleDownload = (file) => {
+    if (file.url) {
+      alert(`Opening document: ${file.name}`);
+      window.open(file.url, '_blank', 'noopener,noreferrer');
+    } else {
+      alert(`Starting download for: ${file.name}`);
+    }
   };
 
   const filteredDocs = currentDocs.map(cat => ({
@@ -186,19 +165,11 @@ export default function DownloadsPage({ context, onBack }) {
                           <span className="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded uppercase">
                             {file.format}
                           </span>
-                          <span>|</span>
-                          <span>{file.size}</span>
-                          {file.version && (
-                            <>
-                              <span>|</span>
-                              <span>Ver: {file.version}</span>
-                            </>
-                          )}
                         </div>
                       </div>
 
                       <button 
-                        onClick={() => handleDownload(file.name)}
+                        onClick={() => handleDownload(file)}
                         className={`flex-shrink-0 text-white font-black text-[10px] uppercase tracking-wider px-4 py-3 rounded-xl transition-all shadow-md hover:-translate-y-0.5 cursor-pointer ${t.btnDownload}`}
                       >
                         ⬇ Download
@@ -211,7 +182,7 @@ export default function DownloadsPage({ context, onBack }) {
 
             {filteredDocs.length === 0 && (
               <div className="text-center py-12 text-slate-400 font-bold">
-                No matching documents found. Try another search query.
+                No documents are currently available for this department.
               </div>
             )}
           </div>

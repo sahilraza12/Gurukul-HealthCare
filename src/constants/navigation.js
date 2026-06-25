@@ -2,7 +2,9 @@ export const getNavigationConfigs = ({
   onHomeClick,
   onSelectPharmacy,
   onSelectNursing,
-  onContactUs
+  onContactUs,
+  onSelectPharmacyResult,
+  onSelectPharmacyDownloads
 }) => ({
   home: {
     stripBg: "from-slate-900 to-slate-950",
@@ -34,8 +36,9 @@ export const getNavigationConfigs = ({
     menu: [
       { name: "Home Gateway", type: "link", action: onHomeClick },
       { name: "About GIPS", type: "dropdown", subItems: ["About GIPS", "Chairman Desk", "Director Desk", "Vision & Mission"] },
-      { name: "Courses Matrix", type: "dropdown", subItems: ["B.Pharm", "D.Pharm", "B.Sc MLS", "B.Sc OTT", "B.Sc RIT"] },
-      { name: "Downloads", type: "dropdown", subItems: ["Download Links", "Syllabus Sheets", "Admission Forms"] },
+      { name: "Courses Matrix", type: "dropdown", subItems: ["Bachelor of Pharmacy", "Diploma Pharmacy", "M.Pharmacy", "Paramedical Courses"] },
+      { name: "Result", type: "link", action: onSelectPharmacyResult },
+      { name: "Downloads", type: "link", action: onSelectPharmacyDownloads },
       { name: "Contact Us", type: "link", action: onContactUs }
     ]
   },
