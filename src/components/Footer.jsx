@@ -24,10 +24,10 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
 
   return (
     <footer className="bg-slate-950 text-slate-400 text-xs font-medium py-16 px-6 border-t-4 border-emerald-600 font-sans relative z-20 mt-16">
-      
+
       {/* Main Footer Link Matrix Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-slate-800">
-        
+
         {/* Col 1: Brand Identity & Helpdesk Contacts */}
         <div className="space-y-6">
           <div className="space-y-3">
@@ -60,8 +60,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
           </h4>
           <ul className="space-y-3 font-bold">
             <li>
-              <button 
-                onClick={() => handleCommonNavigate('home')} 
+              <button
+                onClick={() => handleCommonNavigate('home')}
                 className="hover:text-white transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-600 group-hover:text-emerald-500 transition-colors">➔</span>
@@ -69,8 +69,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleCommonNavigate('home-grievance')} 
+              <button
+                onClick={() => handleCommonNavigate('home-grievance')}
                 className="hover:text-white transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-600 group-hover:text-emerald-500 transition-colors">➔</span>
@@ -78,8 +78,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleCommonNavigate('home-contact')} 
+              <button
+                onClick={() => handleCommonNavigate('home-contact')}
                 className="hover:text-white transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-600 group-hover:text-emerald-500 transition-colors">➔</span>
@@ -87,12 +87,12 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   const el = document.getElementById('courses-matrix');
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }} 
+                }}
                 className="hover:text-white transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-600 group-hover:text-emerald-500 transition-colors">➔</span>
@@ -110,8 +110,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
           </h4>
           <ul className="space-y-3 font-bold">
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy', 'facilities')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy', 'facilities')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -119,8 +119,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-about')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-about')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -128,8 +128,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-chairman')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-chairman')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -137,8 +137,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-director')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-director')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -146,8 +146,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-vision')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-vision')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -155,8 +155,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-result')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-result')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
@@ -164,12 +164,21 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handlePharmacyNavigate('pharmacy-downloads')} 
+              <button
+                onClick={() => handlePharmacyNavigate('pharmacy-downloads')}
                 className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
                 Syllabus & Study Downloads
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => window.open('https://www.mrsptu.ac.in/', '_blank')}
+                className="hover:text-emerald-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
+              >
+                <span className="text-slate-700 group-hover:text-emerald-400 transition-colors">➔</span>
+                MRSPTU VC/Registrar
               </button>
             </li>
           </ul>
@@ -183,8 +192,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
           </h4>
           <ul className="space-y-3 font-bold">
             <li>
-              <button 
-                onClick={() => handleNursingNavigate('nursing', 'overview')} 
+              <button
+                onClick={() => handleNursingNavigate('nursing', 'overview')}
                 className="hover:text-teal-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-teal-400 transition-colors">➔</span>
@@ -192,8 +201,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleNursingNavigate('nursing', 'noc')} 
+              <button
+                onClick={() => handleNursingNavigate('nursing', 'noc')}
                 className="hover:text-teal-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-teal-400 transition-colors">➔</span>
@@ -201,8 +210,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleNursingNavigate('nursing', 'desk')} 
+              <button
+                onClick={() => handleNursingNavigate('nursing', 'desk')}
                 className="hover:text-teal-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-teal-400 transition-colors">➔</span>
@@ -210,8 +219,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleNursingNavigate('nursing', 'testimonials')} 
+              <button
+                onClick={() => handleNursingNavigate('nursing', 'testimonials')}
                 className="hover:text-teal-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-teal-400 transition-colors">➔</span>
@@ -219,8 +228,8 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleNursingNavigate('nursing-downloads')} 
+              <button
+                onClick={() => handleNursingNavigate('nursing-downloads')}
                 className="hover:text-teal-300 text-slate-400 transition-colors text-left flex items-center gap-1.5 group"
               >
                 <span className="text-slate-700 group-hover:text-teal-400 transition-colors">➔</span>

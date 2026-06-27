@@ -46,7 +46,8 @@ export default function DownloadsPage({ context, onBack }) {
         files: [
           { name: 'MRSPTU Affiliation Document', format: 'PDF', url: '/documents/regulatory/mrsptu-affiliation-document.pdf' },
           { name: 'PCI Extension of Approval Letter', format: 'PDF', url: '/documents/regulatory/pci-approval-letter.pdf' },
-          { name: 'PCI SIF Report 2024-25', format: 'PDF', url: '/documents/regulatory/pci-sif-report-2024-25.pdf' }
+          { name: 'PCI SIF Report 2024-25', format: 'PDF', url: '/documents/regulatory/pci-sif-report-2024-25.pdf' },
+          { name: 'PSBTE APPROVAL LETTER', format: 'PDF', url: '/documents/regulatory/psbte-approval-letter.pdf' }
         ]
       },
       {
@@ -60,7 +61,8 @@ export default function DownloadsPage({ context, onBack }) {
           { name: 'Internal Complaints Committee', format: 'PDF', url: '/documents/committees/internal-complaints-committee.pdf' },
           { name: 'Placement & Career Guidance Cell', format: 'PDF', url: '/documents/committees/placement-career-guidance-cell.pdf' },
           { name: 'Prevention of Caste Discrimination Committee', format: 'PDF', url: '/documents/committees/caste-discrimination-prevention-committee.pdf' },
-          { name: 'Sports Committee', format: 'PNG', url: '/documents/committees/sports-committee.png' }
+          { name: 'Sports Committee', format: 'PNG', url: '/documents/committees/sports-committee.png' },
+          { name: 'Anti Ragging Committee', format: 'PDF', url: '/documents/committees/anti-rangging-committee.pdf' }
         ]
       }
     ],
