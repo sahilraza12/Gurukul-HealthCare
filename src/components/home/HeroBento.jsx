@@ -33,9 +33,11 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight mt-5 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] uppercase leading-tight">
             Gurukul Healthcare Group of Institutions
           </h1>
-          <p className="text-white mt-4 text-xs md:text-sm font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] bg-black/40 inline-block px-5 py-2 rounded-xl backdrop-blur-sm tracking-wide">
-            📍 VPO Badesh Kalan, Khamano, Fatehgarh Sahib, Punjab - 141801
-          </p>
+          <div className="text-white mt-4 text-xs md:text-sm font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] bg-black/40 inline-flex flex-col sm:flex-row gap-2 sm:gap-6 px-5 py-3 rounded-xl backdrop-blur-sm tracking-wide">
+            <span>📍 Pharmacy Campus: Khamano, Punjab</span>
+            <span className="hidden sm:inline text-emerald-500">|</span>
+            <span>📍 Nursing Campus: Khamanon, Fatehgarh Sahib, Punjab</span>
+          </div>
         </div>
 
         {/* --- DUAL GROUP PORTAL BLOCK CORES --- */}
@@ -50,8 +52,11 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
               <h2 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-emerald-700 transition-colors">
                 Gurukul Institute of Pharmaceutical Sciences
               </h2>
-              <p className="text-slate-700 text-sm leading-relaxed mb-6 font-semibold">
+              <p className="text-slate-700 text-sm leading-relaxed mb-4 font-semibold">
                 PCI Approved premier core setups targeting advanced formulation, digital analytical chemistry labs, and comprehensive **LAB 1** research infrastructures.
+              </p>
+              <p className="text-slate-555 text-[11px] font-mono font-bold uppercase tracking-wider mb-6">
+                📍 VPO Badesh Kalan, Khamano, Punjab - 141801
               </p>
             </div>
             <button 
@@ -71,8 +76,11 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
               <h2 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-emerald-700 transition-colors">
                 Gurukul Institute of Nursing Sciences
               </h2>
-              <p className="text-slate-700 text-sm leading-relaxed mb-6 font-semibold">
+              <p className="text-slate-700 text-sm leading-relaxed mb-4 font-semibold">
                 INC Approved specialized professional tracking focusing heavily on live **HAP PRACTICAL PERFORMING** wards, medical simulation, and direct clinical tie-ups.
+              </p>
+              <p className="text-slate-555 text-[11px] font-mono font-bold uppercase tracking-wider mb-6">
+                📍 Badesh Kalan, Khamanon, District-Fatehgarh Sahib, Punjab, India
               </p>
             </div>
             <button 

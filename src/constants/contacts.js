@@ -33,13 +33,22 @@ export const themes = {
 
 export const getDepartments = (context) => [
   {
-    name: "Campus Address",
+    name: "Pharmacy Campus Address",
     icon: "📍",
     details: [
-      { label: "Address", value: "VPO - Badesh Kalan, Khamanon, District - Fatehgarh Sahib, Punjab, India" },
+      { label: "Address", value: "VPO - Badesh Kalan, Khamano, District - Fatehgarh Sahib, Punjab - 141801" },
       { label: "Contact Numbers", value: "01628-260511" }
     ],
-    highlight: true
+    highlight: context === 'pharmacy' || context === 'home'
+  },
+  {
+    name: "Nursing Campus Address",
+    icon: "🏥",
+    details: [
+      { label: "Address", value: "Badesh Kalan, Khamanon, District-Fatehgarh Sahib, Punjab, India" },
+      { label: "Contact Numbers", value: "+91-9675631111, +91-9501365511" }
+    ],
+    highlight: context === 'nursing' || context === 'home'
   },
   {
     name: "Chairman Office",
@@ -62,7 +71,9 @@ export const getDepartments = (context) => [
     name: "Department of Nursing",
     icon: "🏥",
     details: [
-      { label: "E-mail", value: "principalgsn2024@gmail.com" }
+      { label: "E-mail", value: "principalgsn2024@gmail.com" },
+      { label: "E-mail", value: "chairmangips@gmail.com" },
+      { label: "Contact Numbers", value: "+91-9675631111, +91-9501365511" }
     ],
     highlight: context === 'nursing' || context === 'home'
   },

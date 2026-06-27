@@ -39,12 +39,23 @@ export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) 
               A premium educational cluster in Punjab offering standard parameters in pharmaceutical engineering, advanced clinical training frameworks, and allied paramedical sciences.
             </p>
           </div>
-          <div className="space-y-2 pt-2 border-t border-slate-900">
+          <div className="space-y-3 pt-2 border-t border-slate-900">
             <h5 className="text-white font-bold uppercase text-[10px] tracking-wider text-slate-300">Admission Coordinates</h5>
-            <p className="leading-relaxed text-slate-400">
-              📍 VPO Badesh Kalan, Khamano, Fatehgarh Sahib, Punjab - 141801
-            </p>
-            <div className="font-mono space-y-1">
+            <div className="space-y-2">
+              <div>
+                <p className="text-slate-400 font-mono text-[9px] uppercase font-black text-slate-300">Pharmacy Campus</p>
+                <p className="leading-relaxed text-slate-400 text-[11px]">
+                  📍 VPO Badesh Kalan, Khamano, Punjab - 141801
+                </p>
+              </div>
+              <div>
+                <p className="text-slate-400 font-mono text-[9px] uppercase font-black text-teal-400">Nursing Campus</p>
+                <p className="leading-relaxed text-slate-400 text-[11px]">
+                  📍 Badesh Kalan, Khamanon, District-Fatehgarh Sahib, Punjab
+                </p>
+              </div>
+            </div>
+            <div className="font-mono space-y-1 pt-2 border-t border-slate-900/60">
               <p className="text-white font-bold">📞 +91 9675631111</p>
               <p className="text-white font-bold">📞 +91 9501365511</p>
               <p className="text-slate-400 text-[11px] lowercase">✉️ chairmangips@gmail.com</p>

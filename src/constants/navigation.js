@@ -4,7 +4,8 @@ export const getNavigationConfigs = ({
   onSelectNursing,
   onContactUs,
   onSelectPharmacyResult,
-  onSelectPharmacyDownloads
+  onSelectPharmacyDownloads,
+  onSelectNursingDownloads
 }) => ({
   home: {
     stripBg: "from-slate-900 to-slate-950",
@@ -36,7 +37,7 @@ export const getNavigationConfigs = ({
     menu: [
       { name: "Home Gateway", type: "link", action: onHomeClick },
       { name: "About GIPS", type: "dropdown", subItems: ["About GIPS", "Chairman Desk", "Director Desk", "Vision & Mission"] },
-      { name: "Courses Matrix", type: "dropdown", subItems: ["Bachelor of Pharmacy", "Diploma Pharmacy", "M.Pharmacy", "Paramedical Courses"] },
+      { name: "Courses", type: "dropdown", subItems: ["Bachelor of Pharmacy", "Diploma Pharmacy", "M.Pharmacy", "Paramedical Courses"] },
       { name: "Result", type: "link", action: onSelectPharmacyResult },
       { name: "Downloads", type: "link", action: onSelectPharmacyDownloads },
       { name: "Contact Us", type: "link", action: onContactUs }
@@ -45,7 +46,7 @@ export const getNavigationConfigs = ({
   nursing: {
     stripBg: "from-teal-900 to-teal-950",
     accentText: "text-teal-300",
-    phone: "+91 9675631111",
+    phone: "+91-9675631111, +91-9501365511",
     email: "principalgsn2024@gmail.com",
     timing: "Mon - Sat: 09:00 AM - 05:30 PM",
     title: "GSN NURSING",
@@ -54,9 +55,9 @@ export const getNavigationConfigs = ({
     logoSrc: "/bannerimage/logo.png",
     menu: [
       { name: "Home Gateway", type: "link", action: onHomeClick },
-      { name: "About GSN", type: "dropdown", subItems: ["NOC Punjab Govt", "Chairman Desk", "Principal Desk"] },
-      { name: "Nursing Tracks", type: "dropdown", subItems: ["B.Sc Nursing", "GNM", "ANM"] },
-      { name: "Downloads", type: "dropdown", subItems: ["Download Links", "Syllabus Links", "Certificates"] },
+      { name: "About GSN", type: "dropdown", subItems: ["Chairman Desk", "Principal Desk"] },
+      { name: "Courses", type: "dropdown", subItems: ["B.Sc Nursing", "GNM", "ANM"] },
+      { name: "Downloads", type: "link", action: onSelectNursingDownloads },
       { name: "Contact Us", type: "link", action: onContactUs }
     ]
   }

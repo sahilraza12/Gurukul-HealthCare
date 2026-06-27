@@ -66,7 +66,16 @@ export default function DownloadsPage({ context, onBack }) {
         ]
       }
     ],
-    nursing: []
+    nursing: [
+      {
+        category: 'Regulatory & Approvals',
+        files: [
+          { name: 'NOC - Punjab Government', format: 'PDF', url: '/documents/nursing/noc.pdf' },
+          { name: 'Punjab Nurses Registration Council — Provisional Recognition Certificate 2024-2025', format: 'PDF', url: '/documents/nursing/pnrc-provisional-recognition-2024-25.pdf' },
+          { name: 'Indian Nursing Council — Inspection Certificate', format: 'PDF', url: '/documents/nursing/inc-inspection-certificate.pdf' }
+        ]
+      }
+    ]
   };
 
   const currentDocs = documents[context] || documents.pharmacy;

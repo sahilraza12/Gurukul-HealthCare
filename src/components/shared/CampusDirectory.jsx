@@ -36,7 +36,7 @@ export default function CampusDirectory({ theme = 'emerald' }) {
     },
     {
       role: "Department of Nursing (GSN)",
-      emails: ["principalgsn2024@gmail.com"],
+      emails: ["principalgsn2024@gmail.com", "chairmangips@gmail.com"],
       tag: "Principal Desk",
       tagColor: "text-teal-700 bg-teal-50 border border-teal-200/60"
     },
@@ -72,12 +72,19 @@ export default function CampusDirectory({ theme = 'emerald' }) {
         {/* Address Location Card */}
         <div className="space-y-2">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block font-mono">📍 Campus Location</span>
-          <p className="text-slate-800 text-sm font-black leading-snug">
-            VPO - Badesh Kalan, Khamanon,<br />
-            District - Fatehgarh Sahib, Punjab, India
-          </p>
+          {theme === 'teal' ? (
+            <p className="text-slate-800 text-sm font-black leading-snug">
+              Badesh Kalan, Khamanon,<br />
+              District - Fatehgarh Sahib, Punjab, India
+            </p>
+          ) : (
+            <p className="text-slate-800 text-sm font-black leading-snug">
+              VPO - Badesh Kalan, Khamano,<br />
+              District - Fatehgarh Sahib, Punjab - 141801
+            </p>
+          )}
           <a 
-            href="https://maps.google.com/?q=Gurukul+Institute+of+Pharmaceutical+Sciences+Badesh+Kalan" 
+            href={theme === 'teal' ? "https://maps.google.com/?q=Badesh+Kalan+Khamanon+Punjab" : "https://maps.google.com/?q=Gurukul+Institute+of+Pharmaceutical+Sciences+Badesh+Kalan"} 
             target="_blank" 
             rel="noreferrer" 
             className={`inline-block text-[11px] font-black font-mono pt-1 transition-colors ${currentTheme.accentText} ${currentTheme.hoverText}`}
@@ -89,12 +96,27 @@ export default function CampusDirectory({ theme = 'emerald' }) {
         {/* Contact Phone Card */}
         <div className="space-y-2 flex flex-col justify-between">
           <div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block font-mono">📞 Campus Hotline</span>
-            <p className="text-slate-800 text-2xl font-black font-mono tracking-tight mt-1">
-              01628-260511
-            </p>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block font-mono">
+              📞 {theme === 'teal' ? 'Nursing Admission Hotline' : 'Campus Hotline'}
+            </span>
+            {theme === 'teal' ? (
+              <div className="space-y-1 mt-1">
+                <p className="text-slate-800 text-lg sm:text-xl font-black font-mono tracking-tight leading-tight">
+                  +91-9675631111
+                </p>
+                <p className="text-slate-800 text-lg sm:text-xl font-black font-mono tracking-tight leading-tight">
+                  +91-9501365511
+                </p>
+              </div>
+            ) : (
+              <p className="text-slate-800 text-2xl font-black font-mono tracking-tight mt-1">
+                01628-260511
+              </p>
+            )}
           </div>
-          <p className="text-slate-400 text-[10px] font-semibold font-mono">Available: Mon - Sat (9:00 AM - 5:00 PM)</p>
+          <p className="text-slate-400 text-[10px] font-semibold font-mono">
+            Available: Mon - Sat {theme === 'teal' ? '(9:00 AM - 5:30 PM)' : '(9:00 AM - 5:00 PM)'}
+          </p>
         </div>
 
       </div>

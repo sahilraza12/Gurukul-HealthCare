@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CampusDirectory from '../../components/shared/CampusDirectory';
 
-export default function NursingPortal({ onBack, activeSection: propActiveSection, setActiveSection: propSetActiveSection }) {
+export default function NursingPortal({ onBack, activeSection: propActiveSection, setActiveSection: propSetActiveSection, onNavigateToChairman, onNavigateToPrincipal, selectedCourse: propSelectedCourse, setSelectedCourse: propSetSelectedCourse }) {
   const [localActiveSection, setLocalActiveSection] = useState('overview');
   const activeSection = propActiveSection || localActiveSection;
   const setActiveSection = propSetActiveSection || setLocalActiveSection;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [localSelectedCourse, setLocalSelectedCourse] = useState(null);
+  const selectedCourse = propSelectedCourse !== undefined ? propSelectedCourse : localSelectedCourse;
+  const setSelectedCourse = propSetSelectedCourse || setLocalSelectedCourse;
 
   // Dynamic state list for dropdown input validation
   const indianStates = [
@@ -27,9 +30,63 @@ export default function NursingPortal({ onBack, activeSection: propActiveSection
 
   // Course structure mapped from extracted data logs
   const nursingCourses = [
-    { name: "B.Sc Nursing", duration: "4 Years", seats: "60 Seats", eligibility: "10+2 Medical with PCBE - Min 45%" },
-    { name: "GNM (General Nursing & Midwifery)", duration: "3 Years", seats: "40 Seats", eligibility: "10+2 Any Stream (Science Preferred) - Min 40%" },
-    { name: "ANM (Auxiliary Nursing Midwifery)", duration: "2 Years", seats: "30 Seats", eligibility: "10+2 Any Stream - Min 40%" }
+    {
+      name: "B.Sc Nursing",
+      displayName: "B.Sc. Nursing — 4 Years Undergraduate Program",
+      duration: "4 Years",
+      type: "Undergraduate Program",
+      fees: "AS PER GOVT. NORMS",
+      icon: "🩺",
+      about: "B.Sc. Nursing is a 4-year undergraduate degree program that provides comprehensive theoretical knowledge and practical clinical training in nursing sciences.",
+      programs: [
+        {
+          sno: 1,
+          name: "B.Sc. Nursing",
+          eligibility: "10+2 Medical with PCBE - Min 45%",
+          duration: "4 Years",
+          approvedBy: "INC & Govt. of Punjab",
+          affiliatedTo: "PNRC, Punjab"
+        }
+      ]
+    },
+    {
+      name: "GNM",
+      displayName: "GNM — General Nursing and Midwifery",
+      duration: "3.5 Years",
+      type: "Diploma Program",
+      fees: "AS PER GOVT. NORMS",
+      icon: "💉",
+      about: "GNM is a 3.5-year Diploma Program consisting of 3 years of academic study followed by 6 months of mandatory internship.",
+      programs: [
+        {
+          sno: 1,
+          name: "GNM (General Nursing and Midwifery)",
+          eligibility: "10+2 Any Stream (Science Preferred) - Min 40%",
+          duration: "3 Yrs Study + 6 Months Internship",
+          approvedBy: "INC & Govt. of Punjab",
+          affiliatedTo: "PNRC, Punjab"
+        }
+      ]
+    },
+    {
+      name: "ANM",
+      displayName: "ANM — Auxiliary Nurse Midwife",
+      duration: "2 Years",
+      type: "Diploma Program",
+      fees: "AS PER GOVT. NORMS",
+      icon: "🏥",
+      about: "ANM (Auxiliary Nurse Midwife) is a 2-year Diploma Program focused on community health nursing, maternal care, and primary healthcare services.",
+      programs: [
+        {
+          sno: 1,
+          name: "ANM (Auxiliary Nurse Midwife)",
+          eligibility: "10+2 Any Stream - Min 40%",
+          duration: "2 Years",
+          approvedBy: "INC & Govt. of Punjab",
+          affiliatedTo: "PNRC, Punjab"
+        }
+      ]
+    }
   ];
 
 
@@ -120,6 +177,36 @@ export default function NursingPortal({ onBack, activeSection: propActiveSection
               <p className="text-slate-600 text-sm md:text-base leading-relaxed text-justify font-semibold">
                 Located in Punjab and founded recently in the year 2023, Gurukul Institute of Nursing Sciences is approved from the "Department of Medical and Research", Govt. of Punjab. We strive to advance the science of health and healthcare through innovative clinical research, dedicated bedside training modules, and absolute practice equipped with modern tech frameworks.
               </p>
+            </div>
+
+            {/* Quick Navigation Cards to Dedicated Pages */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div 
+                onClick={onNavigateToChairman}
+                className="bg-gradient-to-br from-teal-50 to-white hover:from-teal-100/50 hover:to-teal-50/10 p-5 rounded-2xl border border-teal-100 hover:border-teal-500 cursor-pointer transition-all shadow-sm group flex flex-col justify-between min-h-[160px] pb-4 animate-fade-in"
+              >
+                <div>
+                  <span className="text-[9px] font-mono font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full uppercase">Leadership Desk</span>
+                  <h4 className="font-black text-slate-900 text-sm mt-2 group-hover:text-teal-700 transition-colors">Message from the Chairman</h4>
+                  <p className="text-[10px] text-slate-500 mt-1 font-semibold line-clamp-2">Dr. Harmesh Kumar's words of inspiration, educational vision, and GSN development.</p>
+                </div>
+                <span className="text-[11px] font-bold text-teal-700 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  Read Chairman Desk →
+                </span>
+              </div>
+              <div 
+                onClick={onNavigateToPrincipal}
+                className="bg-gradient-to-br from-teal-50 to-white hover:from-teal-100/50 hover:to-teal-50/10 p-5 rounded-2xl border border-teal-100 hover:border-teal-500 cursor-pointer transition-all shadow-sm group flex flex-col justify-between min-h-[160px] pb-4 animate-fade-in"
+              >
+                <div>
+                  <span className="text-[9px] font-mono font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full uppercase">Academic Desk</span>
+                  <h4 className="font-black text-slate-900 text-sm mt-2 group-hover:text-teal-700 transition-colors">From the Principal's Desk</h4>
+                  <p className="text-[10px] text-slate-500 mt-1 font-semibold line-clamp-2">Dr. Jasmail Kaur's welcome greetings and guidance on nursing as an honorable, compassionate career.</p>
+                </div>
+                <span className="text-[11px] font-bold text-teal-700 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  Read Principal Desk →
+                </span>
+              </div>
             </div>
 
             {/* INTERACTIVE TEXT BOX MATRIX TABS */}
@@ -257,6 +344,16 @@ export default function NursingPortal({ onBack, activeSection: propActiveSection
               <div className="border-b pb-3 border-slate-200 mb-4">
                 <h3 className="font-black text-slate-900 text-lg tracking-tight">Instant Admission Query</h3>
                 <p className="text-slate-400 text-[10px] font-mono font-bold uppercase tracking-wider mt-0.5">Nursing Desk Live Line</p>
+                <div className="mt-2.5 font-mono text-[11px] font-bold text-teal-700 bg-teal-50 border border-teal-200/50 p-3 rounded-2xl space-y-1 shadow-inner">
+                  <p className="flex items-center gap-1.5">📞 <span>+91-9675631111</span></p>
+                  <p className="flex items-center gap-1.5">📞 <span>+91-9501365511</span></p>
+                  <p className="flex items-center gap-1.5 lowercase text-slate-500 hover:text-slate-700 transition-colors mt-1 pt-1 border-t border-slate-200/50">
+                    ✉️ <a href="mailto:principalgsn2024@gmail.com">principalgsn2024@gmail.com</a>
+                  </p>
+                  <p className="flex items-center gap-1.5 lowercase text-slate-500 hover:text-slate-700 transition-colors">
+                    ✉️ <a href="mailto:chairmangips@gmail.com">chairmangips@gmail.com</a>
+                  </p>
+                </div>
               </div>
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div>
@@ -298,24 +395,142 @@ export default function NursingPortal({ onBack, activeSection: propActiveSection
 
         {/* Lower Full-Width Sections */}
         <div className="p-6 md:p-10 border-t border-slate-100 space-y-10 bg-slate-50/30">
-          
-          {/* Courses Allocation Layout matching Pharmacy file style */}
-          <div>
-            <h3 className="text-xl font-black text-slate-900 mb-6 tracking-tight flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-teal-600" />
-              Offered Nursing Program Matrix
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {nursingCourses.map((course, idx) => (
-                <div key={idx} className="p-5 rounded-2xl border border-slate-200/80 bg-white hover:border-teal-500 transition-all shadow-sm">
-                  <h4 className="font-black text-slate-900 text-sm mb-1">{course.name}</h4>
-                  <div className="flex justify-between text-[11px] font-mono font-bold text-slate-500 mt-3 pt-3 border-t border-slate-100">
-                    <span>⏱️ {course.duration}</span>
-                    <span className="text-teal-700 bg-teal-50/70 px-1.5 py-0.5 rounded">👥 {course.seats}</span>
+
+          {/* Courses Matrix Showcase - Pharmacy-style Interactive Expand/Collapse */}
+          <div id="courses-matrix" className="scroll-mt-24">
+            <div className="mb-6">
+              <h3 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
+                <span className="w-2.5 h-2.5 rounded-full bg-teal-600" />
+                Offered Courses Catalog Matrix
+              </h3>
+              <p className="text-[11px] text-slate-400 font-mono font-bold uppercase tracking-wider mt-1 ml-4.5">
+                👉 Click any course card to expand details inline instantly
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              {nursingCourses.map((course, idx) => {
+                const isSelected = (selectedCourse?.name || selectedCourse) === course.name;
+                return (
+                  <div key={idx} className="space-y-2">
+                    {/* Main Clickable Card Header */}
+                    <div
+                      onClick={() => setSelectedCourse(isSelected ? null : course)}
+                      className={`p-5 rounded-2xl border transition-all cursor-pointer select-none flex items-center justify-between shadow-sm relative ${
+                        isSelected
+                          ? 'border-teal-600 bg-teal-50/40 ring-2 ring-teal-600/20'
+                          : 'border-slate-200/80 bg-white hover:border-slate-300 hover:shadow-md'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <span className="text-xl bg-slate-50 p-2 rounded-xl border flex-shrink-0 shadow-sm">{course.icon}</span>
+                        <div>
+                          <h4 className="font-black text-slate-900 text-sm md:text-base leading-snug tracking-tight">
+                            {course.displayName || course.name}
+                          </h4>
+                          <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider mt-0.5">
+                            ⏱️ Duration: {course.duration}
+                          </p>
+                        </div>
+                      </div>
+                      {/* Expand / Collapse arrow */}
+                      <div className={`text-slate-400 font-mono text-xs transition-transform duration-300 ${isSelected ? 'rotate-180 text-teal-600 font-black' : ''}`}>
+                        ▼
+                      </div>
+                    </div>
+
+                    {/* INLINE DETAILS PANEL */}
+                    {isSelected && (
+                      <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-xl animate-fade-in space-y-5 mx-1">
+                        {/* Summary Header */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold">
+                          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <div>
+                              <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">💰 Course Fees</span>
+                              <p className="text-teal-400 text-xs sm:text-sm font-black uppercase">{course.fees}</p>
+                            </div>
+                            <span className="text-xl">💳</span>
+                          </div>
+                          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                            <div>
+                              <span className="block text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">⏱️ General Duration</span>
+                              <p className="text-slate-200 text-xs sm:text-sm font-black uppercase">{course.duration}</p>
+                            </div>
+                            <span className="text-xl">📅</span>
+                          </div>
+                        </div>
+
+                        {/* Program specifications */}
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 pb-1 border-b border-slate-800">
+                            <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                            <h5 className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">Detailed Program Specifications</h5>
+                          </div>
+
+                          {/* Desktop/Tablet view: Premium structured table */}
+                          <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/40">
+                            <table className="w-full text-left text-xs border-collapse">
+                              <thead>
+                                <tr className="bg-slate-950/80 text-slate-400 font-mono text-[9px] uppercase border-b border-slate-800">
+                                  <th className="py-3 px-4 text-center font-bold w-12">S.No.</th>
+                                  <th className="py-3 px-4 font-bold">Program Name</th>
+                                  <th className="py-3 px-4 font-bold">Eligibility Criteria</th>
+                                  <th className="py-3 px-4 font-bold w-28">Duration</th>
+                                  <th className="py-3 px-4 font-bold">Approved By</th>
+                                  <th className="py-3 px-4 font-bold">Affiliated To</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-800/60 font-medium">
+                                {course.programs.map((prog, pIdx) => (
+                                  <tr key={pIdx} className="hover:bg-slate-900/30 transition-colors">
+                                    <td className="py-3.5 px-4 text-center font-mono text-slate-500 font-bold">{prog.sno}</td>
+                                    <td className="py-3.5 px-4 font-black text-slate-100">{prog.name}</td>
+                                    <td className="py-3.5 px-4 text-teal-400 font-semibold leading-relaxed">{prog.eligibility}</td>
+                                    <td className="py-3.5 px-4 font-mono text-slate-300">{prog.duration}</td>
+                                    <td className="py-3.5 px-4 text-slate-300">{prog.approvedBy}</td>
+                                    <td className="py-3.5 px-4 text-slate-300">{prog.affiliatedTo}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          {/* Mobile view: Stacked detail cards */}
+                          <div className="block md:hidden space-y-3">
+                            {course.programs.map((prog, pIdx) => (
+                              <div key={pIdx} className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                                <div className="flex items-center justify-between border-b border-slate-900 pb-2">
+                                  <span className="text-[9px] font-mono font-bold text-slate-500">PROGRAM #{prog.sno}</span>
+                                  <span className="text-xs font-mono font-bold text-teal-400">{prog.duration}</span>
+                                </div>
+                                <div>
+                                  <h6 className="font-black text-slate-100 text-xs sm:text-sm">{prog.name}</h6>
+                                </div>
+                                <div className="grid grid-cols-1 gap-2 text-[11px] pt-1">
+                                  <div>
+                                    <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">🎓 Eligibility:</span>
+                                    <p className="text-teal-400 font-bold leading-relaxed">{prog.eligibility}</p>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-2 border-t border-slate-900/60 pt-2">
+                                    <div>
+                                      <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">📜 Approved By:</span>
+                                      <p className="text-slate-300 font-medium leading-tight">{prog.approvedBy}</p>
+                                    </div>
+                                    <div>
+                                      <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">🏛️ Affiliated To:</span>
+                                      <p className="text-slate-300 font-medium leading-tight">{prog.affiliatedTo}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-[10px] text-slate-400 font-bold mt-2 font-sans">Criteria: {course.eligibility}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

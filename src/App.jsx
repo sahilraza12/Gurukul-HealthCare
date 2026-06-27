@@ -8,6 +8,8 @@ import ProgramGrid from './components/home/ProgramGrid';
 import UnifiedNotices from './components/shared/UnifiedNotices'; // Notice board
 import PharmacyPortal from './pages/pharmacy/PharmacyPortal';
 import NursingPortal from './pages/nursing/NursingPortal';
+import GsnChairmanPage from './pages/nursing/GsnChairmanPage';
+import GsnPrincipalPage from './pages/nursing/GsnPrincipalPage';
 import GipsAboutPage from './pages/pharmacy/GipsAboutPage';
 import GipsChairmanPage from './pages/pharmacy/GipsChairmanPage';
 import GipsDirectorPage from './pages/pharmacy/GipsDirectorPage';
@@ -23,6 +25,7 @@ function App() {
   const [pharmacyTab, setPharmacyTab] = useState('about');
   const [nursingTab, setNursingTab] = useState('overview');
   const [selectedPharmacyCourse, setSelectedPharmacyCourse] = useState(null);
+  const [selectedNursingCourse, setSelectedNursingCourse] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-50 antialiased selection:bg-emerald-100 selection:text-emerald-900 flex flex-col justify-between">
@@ -60,11 +63,26 @@ function App() {
               }
             }, 100);
           }}
+          onSelectNursingCourse={(courseName) => {
+            setViewState('nursing');
+            setSelectedNursingCourse(courseName);
+            setTimeout(() => {
+              const el = document.getElementById('courses-matrix');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 100);
+          }}
           onSelectPharmacyResult={() => setViewState('pharmacy-result')}
           onSelectPharmacyDownloads={() => setViewState('pharmacy-downloads')}
+          onSelectNursingDownloads={() => setViewState('nursing-downloads')}
           onSelectNursingTab={(tab) => {
             if (tab === 'downloads-page') {
               setViewState('nursing-downloads');
+            } else if (tab === 'chairman') {
+              setViewState('nursing-chairman');
+            } else if (tab === 'principal') {
+              setViewState('nursing-principal');
             } else {
               setViewState('nursing');
               setNursingTab(tab);
@@ -149,6 +167,22 @@ function App() {
               onBack={() => setViewState('home')} 
               activeSection={nursingTab} 
               setActiveSection={setNursingTab} 
+              onNavigateToChairman={() => setViewState('nursing-chairman')}
+              onNavigateToPrincipal={() => setViewState('nursing-principal')}
+              selectedCourse={selectedNursingCourse}
+              setSelectedCourse={setSelectedNursingCourse}
+            />
+          )}
+
+          {viewState === 'nursing-chairman' && (
+            <GsnChairmanPage 
+              onBackToPortal={() => setViewState('nursing')} 
+            />
+          )}
+
+          {viewState === 'nursing-principal' && (
+            <GsnPrincipalPage 
+              onBackToPortal={() => setViewState('nursing')} 
             />
           )}
 

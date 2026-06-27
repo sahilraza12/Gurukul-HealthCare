@@ -52,37 +52,68 @@ export default function ContactUsPage({ context, onBack }) {
         {/* Main Content Area */}
         <div className="p-6 sm:p-10 space-y-6">
 
-          {/* Campus Location Card */}
-          <div className={`${t.sectionBg} border rounded-3xl p-6 sm:p-8`}>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1 space-y-3">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-                  <span className={`w-2.5 h-2.5 rounded-full ${t.dot}`} />
-                  Campus Location
+          {/* Campus Location Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            {/* Pharmacy Campus */}
+            <div className="md:col-span-1 border rounded-3xl p-6 bg-emerald-50/20 border-emerald-100 flex flex-col justify-between shadow-sm">
+              <div className="space-y-3">
+                <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full uppercase tracking-wider block w-fit">Pharmacy Wing</span>
+                <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse" />
+                  GIPS Campus
                 </h3>
-                <p className="text-slate-600 text-sm font-semibold leading-relaxed">
-                  VPO - Badesh Kalan, Khamanon,<br />
-                  District - Fatehgarh Sahib, Punjab, India
-                </p>
-                <p className="text-slate-700 text-sm font-bold font-mono">
-                  📞 01628-260511
+                <p className="text-slate-650 text-xs font-semibold leading-relaxed">
+                  VPO - Badesh Kalan, Khamano,<br />
+                  District - Fatehgarh Sahib, Punjab - 141801
                 </p>
               </div>
-              <div className="flex-1">
-                <div className="w-full h-48 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                  <iframe
-                    title="Gurukul Institute Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3424.8!2d76.2!3d30.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQyJzAwLjAiTiA3NsKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
+              <div className="text-slate-700 text-xs font-bold font-mono mt-4 pt-3 border-t border-slate-100 space-y-1">
+                <p>📞 01628-260511</p>
+                <p className="text-[10px] text-slate-500 font-sans tracking-normal font-medium">✉️ principalgips2017@gmail.com</p>
               </div>
             </div>
+
+            {/* Nursing Campus */}
+            <div className="md:col-span-1 border rounded-3xl p-6 bg-teal-50/20 border-teal-100 flex flex-col justify-between shadow-sm">
+              <div className="space-y-3">
+                <span className="text-[9px] font-mono font-bold text-teal-700 bg-teal-100/80 px-2 py-0.5 rounded-full uppercase tracking-wider block w-fit">Nursing Wing</span>
+                <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-teal-600 animate-pulse" />
+                  GSN Campus
+                </h3>
+                <p className="text-slate-650 text-xs font-semibold leading-relaxed">
+                  Badesh Kalan, Khamanon,<br />
+                  District - Fatehgarh Sahib, Punjab, India
+                </p>
+              </div>
+              <div className="text-slate-700 text-xs font-bold font-mono mt-4 pt-3 border-t border-slate-100 space-y-1">
+                <p>📞 +91-9675631111</p>
+                <p>📞 +91-9501365511</p>
+                <p className="text-[10px] text-slate-500 font-sans tracking-normal font-medium">✉️ principalgsn2024@gmail.com</p>
+              </div>
+            </div>
+
+            {/* Interactive Map */}
+            <div className="md:col-span-1 border rounded-3xl p-6 bg-slate-50/50 border-slate-200/80 flex flex-col justify-between shadow-sm">
+              <div className="space-y-1 mb-2">
+                <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider block">🗺️ Campus Hub</span>
+                <h4 className="text-xs font-black text-slate-800 uppercase">Interactive Map Location</h4>
+              </div>
+              <div className="w-full h-28 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
+                <iframe
+                  title="Gurukul Institute Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3424.8!2d76.2!3d30.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQyJzAwLjAiTiA3NsKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+
           </div>
 
           {/* Department Contact Cards Grid */}

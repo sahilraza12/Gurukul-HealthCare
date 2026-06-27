@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { getNavigationConfigs } from '../../constants/navigation';
 
-export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing, onSelectPharmacyTab, onSelectNursingTab, onSelectPharmacyCourse, onSelectPharmacyResult, onSelectPharmacyDownloads, onContactUs }) {
+export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing, onSelectPharmacyTab, onSelectNursingTab, onSelectPharmacyCourse, onSelectNursingCourse, onSelectNursingDownloads, onSelectPharmacyResult, onSelectPharmacyDownloads, onContactUs }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileDropdownIdx, setMobileDropdownIdx] = useState(null);
@@ -42,10 +42,14 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
         onSelectPharmacyTab && onSelectPharmacyTab('about');
       }
     } else if (mapped === 'nursing') {
-      if (subName === 'NOC Punjab Govt') {
-        onSelectNursingTab && onSelectNursingTab('noc');
+      if (['B.Sc Nursing', 'GNM', 'ANM'].includes(subName)) {
+        onSelectNursingCourse && onSelectNursingCourse(subName);
       } else if (subName === 'Principal Desk') {
-        onSelectNursingTab && onSelectNursingTab('desk');
+        onSelectNursingTab && onSelectNursingTab('principal');
+      } else if (subName === 'Chairman Desk') {
+        onSelectNursingTab && onSelectNursingTab('chairman');
+      } else if (subName === 'NOC Punjab Govt') {
+        onSelectNursingTab && onSelectNursingTab('noc');
       } else if (subName === 'Download Links') {
         onSelectNursingTab && onSelectNursingTab('downloads-page');
       } else {
@@ -66,7 +70,8 @@ export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onS
     onSelectNursing,
     onContactUs,
     onSelectPharmacyResult,
-    onSelectPharmacyDownloads
+    onSelectPharmacyDownloads,
+    onSelectNursingDownloads
   });
 
   const currentConfig = configs[getMappedView(currentView)] || configs.home;
