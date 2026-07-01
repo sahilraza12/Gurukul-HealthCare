@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProgramGrid() {
+export default function ProgramGrid({ onSelectPharmacyCourse, onSelectNursingCourse }) {
   const courses = [
     {
       wing: "Pharmacy (GIPS)",
@@ -60,6 +60,30 @@ export default function ProgramGrid() {
     }
   ];
 
+  // Maps home page course names to portal course names
+  const pharmacyCourseMap = {
+    "Bachelor of Pharmacy (B.Pharmacy)": "Bachelor of Pharmacy",
+    "Diploma Pharmacy (D.Pharmacy)": "Diploma Pharmacy",
+    "M.Pharmacy (Master of Pharmacy)": "M.Pharmacy",
+    "Paramedical Courses (B.Sc. MLS / OT / Radiology)": "Paramedical Courses"
+  };
+
+  const nursingCourseMap = {
+    "B.Sc Nursing": "B.Sc Nursing",
+    "GNM (General Nursing & Midwifery)": "GNM",
+    "ANM (Auxiliary Nursing Midwifery)": "ANM"
+  };
+
+  const handleCourseClick = (course) => {
+    if (course.wing.includes('Pharmacy')) {
+      const portalName = pharmacyCourseMap[course.name] || course.name;
+      onSelectPharmacyCourse && onSelectPharmacyCourse(portalName);
+    } else if (course.wing.includes('Nursing')) {
+      const portalName = nursingCourseMap[course.name] || course.name;
+      onSelectNursingCourse && onSelectNursingCourse(portalName);
+    }
+  };
+
   return (
     <div className="bg-slate-50 py-16 px-4 border-t border-slate-200">
       <div className="max-w-7xl mx-auto">
@@ -81,16 +105,25 @@ export default function ProgramGrid() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {courses.map((course, idx) => (
             <div 
-              key={idx} 
-              className={`p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md hover:scale-[1.01] bg-white ${course.color}`}
+              key={idx}
+              onClick={() => handleCourseClick(course)}
+              className={`p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white cursor-pointer group relative overflow-hidden ${course.color}`}
             >
+              {/* Hover shimmer effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-white/40 to-transparent" />
+
               <div>
-                {/* Wing Badge */}
-                <span className="inline-block text-[10px] font-bold font-mono tracking-wider uppercase px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 mb-4 shadow-sm">
-                  {course.wing}
-                </span>
+                {/* Wing Badge + View Detail CTA */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-block text-[10px] font-bold font-mono tracking-wider uppercase px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-sm">
+                    {course.wing}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 group-hover:text-emerald-600 transition-colors flex items-center gap-1">
+                    View Details <span className="group-hover:translate-x-1 inline-block transition-transform">→</span>
+                  </span>
+                </div>
                 {/* Course Name */}
-                <h3 className="text-xl font-black text-slate-900 mb-2 tracking-tight">
+                <h3 className="text-xl font-black text-slate-900 mb-2 tracking-tight group-hover:text-emerald-700 transition-colors">
                   {course.name}
                 </h3>
                 {/* Eligibility Text */}

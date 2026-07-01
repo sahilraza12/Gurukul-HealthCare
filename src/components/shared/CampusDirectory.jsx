@@ -56,7 +56,7 @@ export default function CampusDirectory({ theme = 'emerald' }) {
 
   return (
     <div className="border border-slate-200/80 rounded-[32px] bg-white p-6 sm:p-8 shadow-xl shadow-slate-100/50 space-y-8">
-      
+
       {/* Component Title Header */}
       <div>
         <span className={`font-extrabold text-[10px] sm:text-xs uppercase tracking-wider px-3 py-1 rounded-md ${currentTheme.accentBg} ${currentTheme.accentText}`}>
@@ -68,7 +68,7 @@ export default function CampusDirectory({ theme = 'emerald' }) {
 
       {/* Upper Grid Layout: Address and Phone Hotline */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-6 rounded-2xl border border-slate-100">
-        
+
         {/* Address Location Card */}
         <div className="space-y-2">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block font-mono">📍 Campus Location</span>
@@ -83,10 +83,10 @@ export default function CampusDirectory({ theme = 'emerald' }) {
               District - Fatehgarh Sahib, Punjab - 141801
             </p>
           )}
-          <a 
-            href={theme === 'teal' ? "https://maps.google.com/?q=Badesh+Kalan+Khamanon+Punjab" : "https://maps.google.com/?q=Gurukul+Institute+of+Pharmaceutical+Sciences+Badesh+Kalan"} 
-            target="_blank" 
-            rel="noreferrer" 
+          <a
+            href={theme === 'teal' ? "https://maps.google.com/?q=Badesh+Kalan+Khamanon+Punjab" : "https://maps.google.com/?q=Gurukul+Institute+of+Pharmaceutical+Sciences+Badesh+Kalan"}
+            target="_blank"
+            rel="noreferrer"
             className={`inline-block text-[11px] font-black font-mono pt-1 transition-colors ${currentTheme.accentText} ${currentTheme.hoverText}`}
           >
             View on Google Maps ↗
@@ -124,11 +124,11 @@ export default function CampusDirectory({ theme = 'emerald' }) {
       {/* Email Directories Listing Block */}
       <div className="space-y-3">
         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block font-mono">✉️ Direct Communication Nodes</span>
-        
+
         <div className="divide-y divide-slate-100 border border-slate-200/60 rounded-2xl overflow-hidden bg-white shadow-sm">
           {contacts.map((contact, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-slate-50/30 transition-colors gap-3"
             >
               <div>
@@ -137,12 +137,12 @@ export default function CampusDirectory({ theme = 'emerald' }) {
                   {contact.tag}
                 </span>
               </div>
-              
+
               <div className="flex flex-col gap-1 md:items-end font-mono text-xs font-bold text-slate-600">
                 {contact.emails.map((email, eIdx) => (
-                  <a 
-                    key={eIdx} 
-                    href={`mailto:${email}`} 
+                  <a
+                    key={eIdx}
+                    href={`mailto:${email}`}
                     className={`transition-colors ${currentTheme.hoverText}`}
                   >
                     {email}

@@ -105,7 +105,24 @@ function App() {
               />
               <GroupStats />
               <BentoFacilities />
-              <ProgramGrid />
+              <ProgramGrid
+                onSelectPharmacyCourse={(courseName) => {
+                  setViewState('pharmacy');
+                  setSelectedPharmacyCourse(courseName);
+                  setTimeout(() => {
+                    const el = document.getElementById('courses-matrix');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+                onSelectNursingCourse={(courseName) => {
+                  setViewState('nursing');
+                  setSelectedNursingCourse(courseName);
+                  setTimeout(() => {
+                    const el = document.getElementById('courses-matrix');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+              />
               
               {/* Dynamic Interactive Tab Notice Board */}
               <UnifiedNotices />
