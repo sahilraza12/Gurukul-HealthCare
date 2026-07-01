@@ -124,10 +124,6 @@ function App() {
                 }}
               />
               
-              {/* Dynamic Interactive Tab Notice Board */}
-              <UnifiedNotices />
-              
-              {/* Official Campus Directory Information */}
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 animate-fade-in relative z-20">
                 <CampusDirectory theme="emerald" />
               </div>

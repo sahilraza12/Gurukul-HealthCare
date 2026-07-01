@@ -8,15 +8,15 @@ export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
     <div className="relative min-h-screen pt-24 pb-16 bg-slate-950 flex items-center justify-center overflow-hidden">
       
       {/* --- SINGLE STATIC BACKGROUND IMAGE --- */}
-      <div className="absolute inset-0 z-0 bg-slate-950">
-        <img
+      <div className="absolute inset-0 z-0 bg-zinc-500">
+        {/* <img
           className="absolute inset-0 w-full h-full object-cover object-center opacity-55 brightness-[0.75]"
           src={bgImage}
           alt="Medical Campus Background"
           onError={(e) => {
             e.target.src = "https://images.unsplash.com/photo-1586773860418-d3b719d30036?auto=format&fit=crop&w=1600&q=80";
           }}
-        />
+        /> */}
       </div>
 
       {/* Dark overlay to make text pop */}
