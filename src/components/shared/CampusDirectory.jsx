@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function CampusDirectory({ theme = 'emerald' }) {
   // Theme color maps for visual consistency

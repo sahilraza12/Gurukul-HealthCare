@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CampusDirectory from './components/shared/CampusDirectory';
 import Navbar from './components/layout/Navbar';
 import HeroBento from './components/home/HeroBento';
 import GroupStats from './components/home/GroupStats';
 import BentoFacilities from './components/home/BentoFacilities';
 import ProgramGrid from './components/home/ProgramGrid';
-import UnifiedNotices from './components/shared/UnifiedNotices'; // Notice board
 import PharmacyPortal from './pages/pharmacy/PharmacyPortal';
 import NursingPortal from './pages/nursing/NursingPortal';
 import GsnChairmanPage from './pages/nursing/GsnChairmanPage';
@@ -124,6 +123,7 @@ function App() {
                 }}
               />
               
+              {/* Official Campus Directory Information */}
               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 animate-fade-in relative z-20">
                 <CampusDirectory theme="emerald" />
               </div>

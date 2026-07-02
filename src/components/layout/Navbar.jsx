@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { getNavigationConfigs } from '../../constants/navigation';
 
 export default function Navbar({ currentView, onHomeClick, onSelectPharmacy, onSelectNursing, onSelectPharmacyTab, onSelectNursingTab, onSelectPharmacyCourse, onSelectNursingCourse, onSelectNursingDownloads, onSelectPharmacyResult, onSelectPharmacyDownloads, onContactUs }) {

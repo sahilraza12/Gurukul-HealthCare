@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CampusDirectory from '../components/shared/CampusDirectory';
 
 export default function GrievancePage({ context, onBack }) {

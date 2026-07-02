@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function Footer({ setViewState, setNursingTab, setPharmacyTab }) {
   const handlePharmacyNavigate = (view, tab = null) => {

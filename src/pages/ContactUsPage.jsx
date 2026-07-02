@@ -1,4 +1,4 @@
-import React from 'react';
+
 import CampusDirectory from '../components/shared/CampusDirectory';
 import { themes, contextLabels, getDepartments } from '../constants/contacts';
 

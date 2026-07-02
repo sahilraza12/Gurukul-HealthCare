@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CampusDirectory from '../../components/shared/CampusDirectory';
 
 export default function NursingPortal({ onBack, activeSection: propActiveSection, setActiveSection: propSetActiveSection, onNavigateToChairman, onNavigateToPrincipal, selectedCourse: propSelectedCourse, setSelectedCourse: propSetSelectedCourse }) {

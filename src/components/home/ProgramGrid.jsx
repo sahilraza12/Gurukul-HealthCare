@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function ProgramGrid({ onSelectPharmacyCourse, onSelectNursingCourse }) {
   const courses = [
@@ -101,7 +100,6 @@ export default function ProgramGrid({ onSelectPharmacyCourse, onSelectNursingCou
           </p>
         </div>
 
-        {/* Course Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {courses.map((course, idx) => (
             <div 

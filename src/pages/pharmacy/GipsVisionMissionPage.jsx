@@ -1,4 +1,4 @@
-import React from 'react';
+
 import CampusDirectory from '../../components/shared/CampusDirectory';
 
 export default function GipsVisionMissionPage({ onBackToPortal }) {

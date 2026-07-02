@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function HeroBento({ onSelectPharmacy, onSelectNursing }) {
   // Configured to use high-quality local campus banner image
